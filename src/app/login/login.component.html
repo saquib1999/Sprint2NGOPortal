@@ -1,0 +1,40 @@
+<div class="container-fluid">
+  <div class="wrapper">
+    <div class="title-text">
+      <div class="title login">Login Form</div>
+    </div>
+    <div class="form-container">
+      <div class="form-inner">
+        <form class="login" [formGroup]="formGroup" (ngSubmit)="loginProcess()">
+          <div class="field">
+            <input
+              type="text"
+              placeholder="Username"
+              formControlName="username"
+            />
+          </div>
+          <div class="field">
+            <input
+              type="password"
+              placeholder="Password"
+              required
+              formControlName="password"
+            />
+          </div>
+          <label>
+            <input type="checkbox" checked="checked" name="remember" /> Remember
+            me
+          </label>
+          <div class="pass-link">
+            <a href="#">Forgot password?</a>
+          </div>
+          <div class="field btn">
+            <div class="btn-layer"></div>
+            <input type="submit" value="Login" />
+          </div>
+          <div class="signup-link">Not a member? <a href="">Signup now</a></div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

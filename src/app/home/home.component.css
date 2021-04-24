@@ -1,0 +1,246 @@
+*{
+    line-height: 20px;
+    /* color: aliceblue; */
+    margin: 0px;
+    padding: 0px;
+    /* background: url('images/background.jpg'); */
+    background-repeat: no-repeat;
+    font-family: 'Baloo Bhai 2', cursive;
+}
+
+/* logo */
+#logo{
+    margin: 5px 20px;
+}
+#logo img{
+    margin: 5px 5px;
+    height: 42px;
+
+
+}
+/* navigation bar */
+#navbar{
+    position: relative;
+    display: flex;
+    align-items: center;
+    top: 0px;
+}
+#navbar ul{
+    display: flex;
+}
+#navbar::before{
+    content: "";
+    background-color: black;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    opacity: 0.4;
+}
+#navbar ul li{
+    /* margin: 20px 20px; */
+    color: aliceblue;
+    list-style: none;
+    font-size: 1.3rem;
+}
+#navbar ul li a{
+    color: aliceblue;
+    display: block;
+    padding: 20px 20px;
+    border-radius: 20px;
+    text-decoration: none;
+    
+}
+#navbar ul li a:hover{
+    color: black;
+    background-color: orange;    
+}
+/* sign in sign out button */
+#login{
+    position: absolute;
+    right: 40px;
+    top: 3px;
+    display: inline-block;
+    /* border: 4px solid green; */
+
+}
+.btn{
+    font-family: 'Baloo Bhai 2', cursive;
+    margin: 10px 10px;
+    padding: 10px 15px ;
+    background: local;
+    color: aliceblue;
+    border: 2px solid orange;
+    border-radius: 17px; 
+    cursor:pointer ;
+    font-size: 1.0rem;
+}
+.btn:hover{
+    color:black;
+    background-color : orange;
+}
+/* Home section */
+#home{
+    display: flex;
+    flex-direction:column;
+    /* padding: 5px 20px; */
+    justify-content: center;
+    align-items: center;
+    height: 470px;
+}
+#home::before{
+    content: "";
+    background:url('../../assets/images/background.jpg') no-repeat;
+    position:absolute;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: -1;
+    opacity: 0.89;
+}
+/* utility classes */
+
+#home p{
+    color: aliceblue;
+    text-align: center;
+    font-size: 1.0rem;
+}
+#home h1{
+    font-size: 3.8rem;
+}
+.h-primary{
+    color: aliceblue;  
+    padding: 40px;
+    margin-bottom: -20px;
+    margin-top: 95px;
+}
+.h-secondary{
+    color:orange;
+    padding: 30px;
+}
+
+.h-btn{ 
+    font-family: 'Baloo Bhai 2', cursive;
+    margin: 0px 10px;
+    padding: 10px 15px ;
+    background: local;
+    color: aliceblue;
+    border: 2px solid orange;
+    border-radius: 20px; 
+    cursor:pointer ;
+    font-size: 1.2  rem;
+}
+.h-btn:hover{
+    color:black;
+    background-color :orange;
+}
+.center{
+    text-align: center;
+}
+/* members section */
+#members{
+    display:flex ;
+    margin: 34px;
+}
+.members-container::before{
+    content: "";
+    background:url('../../assets/images/volunteering-austral.jpg') no-repeat;
+    position:absolute;
+    height: 100%;
+    width: 100%;
+    top: 465px;
+    left: 35px;
+    z-index: -1;
+    opacity: 0.89;
+}
+#members .box{
+    border: 2px solid orange;
+    padding: 22px;
+    margin: 0px 6px;
+    border-radius: 40px;
+    background-color: #f9f6f6;
+}
+#members .box img{
+     height: 250px;
+     margin: auto;
+     display: block;
+}
+.h1-members{
+    font-family: 'Bree Serif','serif';
+    font-size: 2.8rem;
+    color: black;
+    padding: 0px;
+    margin-bottom: -5px;
+    margin-top: -40px;
+    font-family: 'Baloo Bhai 2';
+    text-align: center;
+}
+.h2-members{
+    font-family: 'Bree Serif','serif';
+    font-size: 1.8em;
+    color: black;
+    padding: 0px;
+    font-family: 'Baloo Bhai 2';
+    text-align: center;
+}
+
+#members .box p{
+    font-size: 1.0rem;
+    font-family: 'Bree Serif','serif';
+
+}
+/* footer */
+footer {
+    background: black;
+    padding: 8px;
+    color: #eee;
+    display: flex;
+}
+footer #left-footer {
+    flex: 1;
+    border-right: 1px solid red;
+    padding-left: 32px;
+}
+footer #right-footer {
+    flex: 2;
+    padding: 8px;
+    text-align: center;
+}
+h3 {
+    display: block;
+    font-size: 1.8em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+footer #left-footer ul {
+    padding: 0;
+    list-style: none;
+    line-height: 1.5;
+    color: #eee;
+}
+footer #right-footer {
+    flex: 2;
+    padding: 8px;
+    text-align: center;
+}
+div {
+    display: block;
+}
+footer a {
+    padding: 0px 0px;
+    color: white;
+    font-size: 1.2rem;
+}
+footer a:hover {
+    text-decoration: none;
+    background-color: #eee;
+    color: black;
+    font-size: 1.2rem;
+    border-radius: 10px;
+}
+/* blogs */
+

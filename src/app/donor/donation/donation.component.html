@@ -1,0 +1,123 @@
+<nav id="navbar">
+  <ul>
+    <li>
+      <a href="#" class="nav-link" routerLinkActive="active" routerLink="/home"
+        >Home</a
+      >
+    </li>
+    <li><a href="#">About Us</a></li>
+    <li>
+      <a
+        class="nav-link"
+        routerLinkActive="active"
+        routerLink="/Donate-Certificate"
+        >Donation Certificate</a
+      >
+    </li>
+    <li>
+      <a class="nav-link" routerLinkActive="active" routerLink="/Last-Receipt"
+        >Payment Receipt</a
+      >
+    </li>
+    <li>
+      <a class="nav-link" routerLinkActive="active" routerLink="/All-Receipt"
+        >All Receipts</a
+      >
+    </li>
+  </ul>
+</nav>
+<div class="mainw3-agile">
+  <h1>Donation Form</h1>
+  <div class="main-agileinfo">
+    <div class="w3pay-left">
+      <div class="w3pay-left-text">
+        <img src="../../../assets/images/logo.png" alt="" />
+        <h2>Lorem ipsum</h2>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi,
+          repellat?
+        </p>
+        <h3>20Rs</h3>
+      </div>
+      <h6>
+        <a class="nav-link" routerLinkActive="active" routerLink="/Donate-Now"
+          ><i class="fa fa-angle-double-left" aria-hidden="true"></i> Cancel
+          your payment</a
+        >
+      </h6>
+    </div>
+    <div class="w3pay-right wthree-pay-grid">
+      <div class="card-bounding agileits">
+        <form action="#" method="post">
+          <div class="card-details">
+            <aside>Name On Card:</aside>
+            <input
+              type="text"
+              name="name"
+              placeholder="Name On Card"
+              required=""
+            />
+          </div>
+          <aside>Card Number:</aside>
+          <div class="card-container">
+            <!--- ".card-type" is a sprite used as a background image with associated classes for the major card types, providing x-y coordinates for the sprite --->
+            <div class="card-type"></div>
+            <input
+              type="text"
+              name="card number"
+              placeholder="0000 0000 0000 0000"
+              onkeyup="$cc.validate(event)"
+              required=""
+            />
+            <!-- The checkmark ".card-valid" used is a custom font from icomoon.io --->
+            <div class="card-valid">
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="card-details agileits-w3layouts">
+            <div class="expiration">
+              <aside>Expiration Date</aside>
+              <input
+                type="text"
+                name="date"
+                onkeyup="$cc.expiry.call(this,event)"
+                maxlength="7"
+                placeholder="mm/yyyy"
+                required=""
+              />
+            </div>
+            <div class="cvv">
+              <aside>CVV</aside>
+              <input
+                type="text"
+                name="cvv"
+                placeholder="XXX"
+                maxlength="3"
+                required=""
+              />
+            </div>
+            <div class="clear"></div>
+          </div>
+          <div class="form-control">
+            <label class="enquiry">Donation comments </label>
+            <textarea
+              id="message"
+              name="message"
+              placeholder="comments"
+              title="Please enter comments"
+            ></textarea>
+            <div class="clear"></div>
+          </div>
+          <input
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/home"
+            type="submit"
+            value="Pay Now"
+          />
+        </form>
+      </div>
+    </div>
+    <div class="clear"></div>
+  </div>
+</div>
