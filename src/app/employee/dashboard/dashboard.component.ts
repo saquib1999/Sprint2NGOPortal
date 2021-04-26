@@ -9,6 +9,9 @@ import { HttpEmployeeService } from 'src/app/services/http-employee.service';
 })
 export class DashboardComponent implements OnInit {
   data!: any;
+  disListLength!: number;
+  appListLength!: number;
+  penListLength!: number;
   constructor(
     private httpEmployeeService: HttpEmployeeService,
     private service: AuthServiceService
@@ -34,6 +37,32 @@ export class DashboardComponent implements OnInit {
         console.log(err), alert('Error');
       }
     );
+
+    this.httpEmployeeService.approvedList().subscribe(
+      (result) => {
+        console.log(result);
+        this.appListLength = result.length;
+      },
+      (err) => {
+        alert('Error');
+        console.log(err);
+      }
+    );
+
+    this.httpEmployeeService.pendingList().subscribe(
+      (result) => {
+        console.log(result);
+        this.penListLength = result.length;
+      },
+      (err) => {
+        alert('Error');
+        console.log(err);
+      }
+    );
+
+    this.httpEmployeeService.distributedList().subscribe((result) => {
+      this.disListLength = result.length;
+    });
   }
 
   OnClick() {

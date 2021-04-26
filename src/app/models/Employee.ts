@@ -1,12 +1,11 @@
 import { Address } from './Address';
 import { User } from './User';
 
-export class NeedyPerson {
+export class Employee {
   id!: number;
   name!: string;
-  phone!: string;
   email!: string;
-  familyIncome!: number;
+  phone!: number;
   userLoginDetails!: User;
   address!: Address;
 }

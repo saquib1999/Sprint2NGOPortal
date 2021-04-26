@@ -12,7 +12,4 @@ export class HomeComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-  toggle() {
-    this.loginWindow != this.loginWindow;
-  }
 }

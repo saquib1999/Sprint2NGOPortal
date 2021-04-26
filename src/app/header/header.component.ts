@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthServiceService } from '../services/auth-service.service';
+import { SignInComponent } from '../sign-in/sign-in.component';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +11,7 @@ import { AuthServiceService } from '../services/auth-service.service';
 export class HeaderComponent implements OnInit {
   loginWindow = false;
   loggedIn = true;
-  constructor(private service: AuthServiceService) {}
+  constructor(private service: AuthServiceService, private router: Router) {}
 
   ngOnInit(): void {}
   toggle() {
@@ -21,5 +23,40 @@ export class HeaderComponent implements OnInit {
   }
   signOut() {
     this.service.logOut();
+  }
+  routeDashboard() {
+    switch (sessionStorage.getItem('userType')) {
+      case '0':
+        this.router.navigate(['/employee']);
+        break;
+      case '1':
+        this.router.navigate(['/donor']);
+        break;
+      case '2':
+        this.router.navigate(['/needy-person']);
+        break;
+      case '3':
+        this.router.navigate(['/admin']);
+        break;
+      default:
+    }
+  }
+
+  routeProfile() {
+    switch (sessionStorage.getItem('userType')) {
+      case '0':
+        this.router.navigate(['/employee/profile']);
+        break;
+      case '1':
+        this.router.navigate(['/donor']);
+        break;
+      case '2':
+        this.router.navigate(['/needy-person']);
+        break;
+      case '3':
+        this.router.navigate(['/admin']);
+        break;
+      default:
+    }
   }
 }

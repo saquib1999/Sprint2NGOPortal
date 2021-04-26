@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { HeaderComponent } from '../header/header.component';
-import { AuthServiceService } from '../services/auth-service.service';
+import { AuthServiceService } from 'src/app/services/auth-service.service';
 
 @Component({
-  selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css'],
+  selector: 'app-change-password',
+  templateUrl: './change-password.component.html',
+  styleUrls: ['./change-password.component.css'],
 })
-export class SignInComponent implements OnInit {
+export class ChangePasswordComponent implements OnInit {
   formGroup!: FormGroup;
   private loggedIn = false;
   token = '';
@@ -25,24 +24,17 @@ export class SignInComponent implements OnInit {
 
   initForm() {
     this.formGroup = new FormGroup({
-      username: new FormControl('', [Validators.required]),
+      username: new FormControl(sessionStorage.getItem('username'), [
+        Validators.required,
+      ]),
       password: new FormControl('', [Validators.required]),
+      newpassword: new FormControl('', [Validators.required]),
+      newpassword2: new FormControl('', [Validators.required]),
     });
   }
 
-  loginProcess() {
+  changePasswordProcess() {
     if (this.formGroup.valid) {
-      this.authService.login(this.formGroup.value).subscribe(
-        (result) => {
-          this.token = result.token;
-          this.loggedIn = true;
-          this.routeDashboard();
-        },
-        (err) => {
-          console.log('HTTP Error', err);
-          console.log(this.formGroup.value);
-        }
-      );
     }
   }
 

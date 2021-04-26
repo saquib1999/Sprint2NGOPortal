@@ -1,0 +1,15 @@
+.green {
+  background-color: rgb(44, 155, 207);
+  text-align: center;
+  padding: 50px;
+}
+.blue {
+  background-color: rgb(18, 21, 209);
+  text-align: center;
+  padding: 50px;
+}
+.yellow {
+  background-color: rgb(191, 29, 231);
+  text-align: center;
+  padding: 50px;
+}
