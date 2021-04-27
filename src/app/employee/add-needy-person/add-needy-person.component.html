@@ -90,9 +90,16 @@
                 formControlName="name"
                 class="form-control"
                 required
+                [ngClass]="{
+                  'is-invalid':
+                    (addNeedyPersonForm.controls['name'].touched ||
+                      addNeedyPersonForm.controls['name'].dirty) &&
+                    !addNeedyPersonForm.controls['name'].valid
+                }"
               />
               <div
-                class="form-control-feedback"
+                class="form-group"
+                style="color: red"
                 *ngIf="
                   addNeedyPersonForm.controls['name'].touched ||
                   addNeedyPersonForm.controls['name'].dirty
@@ -121,9 +128,16 @@
                   placeholder="Address"
                   formControlName="landmark"
                   required
+                  [ngClass]="{
+                    'is-invalid':
+                      (address.controls['landmark'].touched ||
+                        address.controls['landmark'].dirty) &&
+                      !address.controls['landmark'].valid
+                  }"
                 />
                 <div
-                  class="form-control-feedback"
+                  class="form-group"
+                  style="color: red"
                   *ngIf="
                     address.controls['landmark'].touched ||
                     address.controls['landmark'].dirty
@@ -146,9 +160,16 @@
                   placeholder="city"
                   formControlName="city"
                   required
+                  [ngClass]="{
+                    'is-invalid':
+                      (address.controls['city'].touched ||
+                        address.controls['city'].dirty) &&
+                      !address.controls['city'].valid
+                  }"
                 />
                 <div
-                  class="form-control-feedback"
+                  class="form-group"
+                  style="color: red"
                   *ngIf="
                     address.controls['city'].touched ||
                     address.controls['city'].dirty
@@ -171,9 +192,16 @@
                   placeholder="state"
                   formControlName="state"
                   required
+                  [ngClass]="{
+                    'is-invalid':
+                      (address.controls['state'].touched ||
+                        address.controls['state'].dirty) &&
+                      !address.controls['state'].valid
+                  }"
                 />
                 <div
-                  class="form-control-feedback"
+                  class="form-group"
+                  style="color: red"
                   *ngIf="
                     address.controls['state'].touched ||
                     address.controls['state'].dirty
@@ -196,9 +224,16 @@
                   placeholder="Enter Pincode"
                   formControlName="pin"
                   required
+                  [ngClass]="{
+                    'is-invalid':
+                      (address.controls['pin'].touched ||
+                        address.controls['pin'].dirty) &&
+                      !address.controls['pin'].valid
+                  }"
                 />
                 <div
-                  class="form-control-feedback"
+                  class="form-group"
+                  style="color: red"
                   *ngIf="
                     address.controls['pin'].touched ||
                     address.controls['pin'].dirty
@@ -218,14 +253,21 @@
               <label>Income</label>
 
               <input
-                type="text"
+                type="number"
                 class="form-control"
                 placeholder="Family Income"
                 formControlName="familyIncome"
                 required
+                [ngClass]="{
+                  'is-invalid':
+                    (addNeedyPersonForm.controls['familyIncome'].touched ||
+                      addNeedyPersonForm.controls['familyIncome'].dirty) &&
+                    !addNeedyPersonForm.controls['familyIncome'].valid
+                }"
               />
               <div
-                class="form-control-feedback"
+                class="form-group"
+                style="color: red"
                 *ngIf="
                   addNeedyPersonForm.controls['familyIncome'].touched ||
                   addNeedyPersonForm.controls['familyIncome'].dirty
@@ -240,10 +282,10 @@
                 </p>
                 <p
                   *ngIf="
-                    addNeedyPersonForm.controls['familyIncome'].errors?.pattern
+                    addNeedyPersonForm.controls['familyIncome'].errors?.min
                   "
                 >
-                  Enter Numbers only
+                  Enter Amount Greter than 0
                 </p>
               </div>
             </div>
@@ -255,23 +297,34 @@
                 formControlName="phone"
                 class="form-control"
                 required
+                [ngClass]="{
+                  'is-invalid':
+                    (addNeedyPersonForm.controls['phone'].touched ||
+                      addNeedyPersonForm.controls['phone'].dirty) &&
+                    !addNeedyPersonForm.controls['phone'].valid
+                }"
               />
               <div
-                class="form-control-feedback"
+                class="form-group"
+                style="color: red"
                 *ngIf="
-                  addNeedyPersonForm.controls['landmark'].touched ||
-                  address.controls['landmark'].dirty
+                  addNeedyPersonForm.controls['phone'].touched ||
+                  addNeedyPersonForm.controls['phone'].dirty
                 "
               >
-                <p *ngIf="address.controls['landmark'].errors?.required">
-                  Address Required
-                </p>
-                <p *ngIf="address.controls['landmark'].errors?.pattern">
-                  Enter Valid Name
-                </p>
+                <span
+                  *ngIf="addNeedyPersonForm.controls['phone'].errors?.required"
+                >
+                  Phone / Mobile No. Required
+                </span>
+                <span
+                  *ngIf="addNeedyPersonForm.controls['phone'].errors?.pattern"
+                >
+                  Enter Valid Phone Mobile No.
+                </span>
               </div>
             </div>
-            <div formGroupName="userLoginDetails">
+            <div formGroupName="userLoginDetails" class="form-group">
               <div class="field">
                 <label>Username</label>
 
@@ -281,21 +334,33 @@
                   placeholder="Username"
                   formControlName="username"
                   required
+                  [ngClass]="{
+                    'is-invalid':
+                      (userLoginDetails.controls['username'].touched ||
+                        userLoginDetails.controls['username'].dirty) &&
+                      !userLoginDetails.controls['username'].valid
+                  }"
                 />
-                <div
-                  class="form-control-feedback"
-                  *ngIf="
-                    address.controls['landmark'].touched ||
-                    address.controls['landmark'].dirty
-                  "
+              </div>
+              <div
+                class="form-group"
+                style="color: red"
+                *ngIf="
+                  userLoginDetails.controls['username'].touched ||
+                  userLoginDetails.controls['username'].dirty
+                "
+              >
+                <p
+                  *ngIf="userLoginDetails.controls['username'].errors?.required"
                 >
-                  <p *ngIf="address.controls['landmark'].errors?.required">
-                    Address Required
-                  </p>
-                  <p *ngIf="address.controls['landmark'].errors?.pattern">
-                    Enter Valid Name
-                  </p>
-                </div>
+                  Username Required
+                </p>
+                <p
+                  *ngIf="userLoginDetails.controls['username'].errors?.pattern"
+                >
+                  Username can contain a-z,A-Z,0-9,@,# only min length 3 should
+                  start with alphabet
+                </p>
               </div>
               <div class="field">
                 <label>Password</label>
@@ -306,44 +371,34 @@
                   placeholder="Enter password"
                   formControlName="password"
                   required
+                  [ngClass]="{
+                    'is-invalid':
+                      userLoginDetails.controls['password'].touched ||
+                      (userLoginDetails.controls['password'].dirty &&
+                        !userLoginDetails.controls['password'].valid)
+                  }"
                 />
-                <div
-                  class="form-control-feedback"
-                  *ngIf="
-                    address.controls['landmark'].touched ||
-                    address.controls['landmark'].dirty
-                  "
-                >
-                  <p *ngIf="address.controls['landmark'].errors?.required">
-                    Address Required
-                  </p>
-                  <p *ngIf="address.controls['landmark'].errors?.pattern">
-                    Enter Valid Name
-                  </p>
-                </div>
               </div>
-              <div class="field">
-                <input
-                  type="password"
-                  class="form-control"
-                  placeholder="Re-Enter password"
-                  formControlName="repassword"
-                  required
-                />
-                <div
-                  class="form-control-feedback"
-                  *ngIf="
-                    address.controls['landmark'].touched ||
-                    address.controls['landmark'].dirty
-                  "
+
+              <div
+                class="form-group"
+                style="color: red"
+                *ngIf="
+                  userLoginDetails.controls['password'].touched ||
+                  userLoginDetails.controls['password'].dirty
+                "
+              >
+                <p
+                  *ngIf="userLoginDetails.controls['password'].errors?.required"
                 >
-                  <p *ngIf="address.controls['landmark'].errors?.required">
-                    Address Required
-                  </p>
-                  <p *ngIf="address.controls['landmark'].errors?.pattern">
-                    Enter Valid Name
-                  </p>
-                </div>
+                  Password Required
+                </p>
+                <p
+                  *ngIf="userLoginDetails.controls['password'].errors?.pattern"
+                >
+                  Password can contain a-z,A-Z,0-9,@,# only and must be atleast
+                  3 letter long
+                </p>
               </div>
             </div>
           </div>

@@ -33,6 +33,12 @@
                       <span *ngIf="signUpForm.controls.name.errors?.required"
                         >Please enter Name.</span
                       >
+                      <span *ngIf="signUpForm.controls.name.errors?.pattern"
+                        >Name cannot have number or symbol.</span
+                      >
+                      <span *ngIf="signUpForm.controls.name.errors?.minlength"
+                        >Name should have atleast 4 characters.</span
+                      >
                     </span>
                   </div>
                 </div>
@@ -45,12 +51,24 @@
                       id="phone"
                       formControlName="phone"
                       placeholder="Mobile Number"
-                      class="form-control here"
+                      class="form-control"
                       type="text"
+                      [ngClass]="{
+                        'is-invalid':
+                          (signUpForm.controls.phone.touched ||
+                            signUpForm.controls.phone.dirty) &&
+                          !signUpForm.controls.phone.valid
+                      }"
                     />
                     <span class="invalid-feedback">
                       <span *ngIf="signUpForm.controls.phone.errors?.required"
-                        >Please enter valid Phone Number.</span
+                        >Please enter Phone Number.</span
+                      >
+                      <span *ngIf="signUpForm.controls.phone.errors?.pattern"
+                        >Phone number cannot be alphabet or symbol.</span
+                      >
+                      <span *ngIf="signUpForm.controls.phone.errors?.minlength"
+                        >Phone number should have atleast 10 digits.</span
                       >
                     </span>
                   </div>
@@ -65,9 +83,15 @@
                       id="familyincome"
                       formControlName="familyIncome"
                       placeholder="Family Income"
-                      class="form-control here"
+                      class="form-control"
                       required="required"
-                      type="text"
+                      type="number"
+                      [ngClass]="{
+                        'is-invalid':
+                          (signUpForm.controls.familyIncome.touched ||
+                            signUpForm.controls.familyIncome.dirty) &&
+                          !signUpForm.controls.familyIncome.valid
+                      }"
                     />
                     <span class="invalid-feedback">
                       <span
@@ -75,6 +99,9 @@
                           signUpForm.controls.familyIncome.errors?.required
                         "
                         >Please Enter Family Income.</span
+                      >
+                      <span *ngIf="signUpForm.controls.familyIncome.errors?.min"
+                        >Family income must be greater than 0.</span
                       >
                     </span>
                   </div>
@@ -95,11 +122,37 @@
                       <input
                         id="username"
                         formControlName="username"
-                        placeholder="Username"
-                        class="form-control here"
+                        placeholder="Username e.g. user@123"
+                        class="form-control"
                         required="required"
                         type="text"
+                        [ngClass]="{
+                          'is-invalid':
+                            (userLoginDetails.controls.username.touched ||
+                              userLoginDetails.controls.username.dirty) &&
+                            !userLoginDetails.controls.username.valid
+                        }"
                       />
+                      <span class="invalid-feedback">
+                        <span
+                          *ngIf="
+                            userLoginDetails.controls.username.errors?.required
+                          "
+                          >Please enter Username.</span
+                        >
+                        <span
+                          *ngIf="
+                            userLoginDetails.controls.username.errors?.minlength
+                          "
+                          >Username should have atleast 3 characters.</span
+                        >
+                        <span
+                          *ngIf="
+                            userLoginDetails.controls.username.errors?.pattern
+                          "
+                          >Symbol should be either @ or #.</span
+                        >
+                      </span>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -111,10 +164,36 @@
                         id="password"
                         formControlName="password"
                         placeholder="Password"
-                        class="form-control here"
+                        class="form-control"
                         required="required"
                         type="password"
+                        [ngClass]="{
+                          'is-invalid':
+                            (userLoginDetails.controls.password.touched ||
+                              userLoginDetails.controls.password.dirty) &&
+                            !userLoginDetails.controls.password.valid
+                        }"
                       />
+                      <span class="invalid-feedback">
+                        <span
+                          *ngIf="
+                            userLoginDetails.controls.password.errors?.required
+                          "
+                          >Please Enter Password.</span
+                        >
+                        <span
+                          *ngIf="
+                            userLoginDetails.controls.password.errors?.minlength
+                          "
+                          >Minimum password length must be 3.</span
+                        >
+                        <span
+                          *ngIf="
+                            userLoginDetails.controls.password.errors?.pattern
+                          "
+                          >Symbol should be either @ or #.</span
+                        >
+                      </span>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -126,9 +205,10 @@
                         id="userType"
                         formControlName="userType"
                         placeholder="User Type"
-                        class="form-control here"
+                        class="form-control"
                         required="required"
                         type="text"
+                        readonly
                       />
                     </div>
                   </div>
@@ -149,10 +229,24 @@
                         id="city"
                         formControlName="city"
                         placeholder="City"
-                        class="form-control here"
+                        class="form-control"
                         required="required"
                         type="text"
+                        [ngClass]="{
+                          'is-invalid':
+                            (address.controls.city.touched ||
+                              address.controls.city.dirty) &&
+                            !address.controls.city.valid
+                        }"
                       />
+                      <span class="invalid-feedback">
+                        <span *ngIf="address.controls.city.errors?.required"
+                          >Please Enter City.</span
+                        >
+                        <span *ngIf="address.controls.city.errors?.pattern"
+                          >City cannot be number or symbol.</span
+                        >
+                      </span>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -164,10 +258,24 @@
                         id="state"
                         formControlName="state"
                         placeholder="State"
-                        class="form-control here"
+                        class="form-control"
                         required="required"
                         type="text"
+                        [ngClass]="{
+                          'is-invalid':
+                            (address.controls.state.touched ||
+                              address.controls.state.dirty) &&
+                            !address.controls.state.valid
+                        }"
                       />
+                      <span class="invalid-feedback">
+                        <span *ngIf="address.controls.state.errors?.required"
+                          >Please Enter State.</span
+                        >
+                        <span *ngIf="address.controls.state.errors?.pattern"
+                          >State cannot be number or symbol.</span
+                        >
+                      </span>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -179,10 +287,21 @@
                         id="landmark"
                         formControlName="landmark"
                         placeholder="Landmark"
-                        class="form-control here"
+                        class="form-control"
                         required="required"
                         type="text"
+                        [ngClass]="{
+                          'is-invalid':
+                            (address.controls.landmark.touched ||
+                              address.controls.landmark.dirty) &&
+                            !address.controls.landmark.valid
+                        }"
                       />
+                      <span class="invalid-feedback">
+                        <span *ngIf="address.controls.landmark.errors?.required"
+                          >Please Enter landmark details.</span
+                        >
+                      </span>
                     </div>
                   </div>
                   <div class="form-group row">
@@ -194,10 +313,24 @@
                         id="pin"
                         formControlName="pin"
                         placeholder="Pincode"
-                        class="form-control here"
+                        class="form-control"
                         required="required"
                         type="text"
+                        [ngClass]="{
+                          'is-invalid':
+                            (address.controls.pin.touched ||
+                              address.controls.pin.dirty) &&
+                            !address.controls.pin.valid
+                        }"
                       />
+                      <span class="invalid-feedback">
+                        <span *ngIf="address.controls.pin.errors?.required"
+                          >Please Enter Pincode.</span
+                        >
+                        <span *ngIf="address.controls.pin.errors?.pattern"
+                          >Pincode cannot be alphabet or symbol.</span
+                        >
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -218,174 +351,3 @@
     </div>
   </div>
 </div>
-
-<!-- <div class="container-fluid">
-  <div class="wrapper">
-    <div class="title-text">
-      <div class="title login">Register</div>
-    </div>
-    <div class="form-container">
-      <div class="form-inner">
-        <form class="register" [formGroup]="formGroup" (ngSubmit)="registerProcess()">
-          <div class="field">
-            <input
-              type="text"
-              placeholder="Fullname"
-              required
-              formControlName="name"
-            />
-          </div>
-          <div class="field">
-            <input
-              type="text"
-              placeholder="Phone Number"
-              required 
-              formControlName="phone"
-            />
-          </div>
-            <div class="field">
-              <input
-                type="text"
-                placeholder="Family Income"
-                required 
-                formControlName="familyIncome"
-              />
-          </div>
-          <div class="form-group row">
-            <label for="userdetails" class="col-4 col-form-label">User Login Details</label> 
-            <div class="col-8"></div>
-          </div>
-          <div class="field">
-            <input
-              type="text"
-              placeholder="Username"
-              formControlName="username"
-            />
-          </div>
-          <div class="field">
-            <input
-              type="password"
-              placeholder="Password"
-              required 
-              formControlName="password"
-            />
-          </div>
-          <div class="form-group row">
-            <label for="userdetails" class="col-4 col-form-label">Address</label> 
-            <div class="col-8"></div>
-          </div>
-          <div class="field">
-            <input
-              type="text"
-              placeholder="City"
-              required
-              formControlName="city"
-            />
-          </div>
-          <div class="field">
-            <input
-              type="text"
-              required
-              placeholder="State"
-              formControlName="state"
-            />
-          </div>
-          <div class="field">
-            <input
-              type="text"
-              required
-              placeholder="Pincode"
-              formControlName="pin"
-            />
-          </div>
-          <div class="field">
-            <input
-              type="text"
-              required
-              placeholder="Landmark"
-              formControlName="landmark"
-            /> 
-          </div>         
-          <div class="field btn">
-            <div class="btn-layer"></div>
-            <input type="submit" value="Register" />
-          </div>
-         
-        </form>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<!-- <div class="main-agileits">
-  <h2 class="sub-head">Sign Up</h2>
-  <div class="sub-main">
-    <form action="#" method="post">
-      <input
-        placeholder="First Name"
-        name="Name"
-        class="name"
-        type="text"
-        required=""
-      />
-      <span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span
-      ><br />
-      <input
-        placeholder="Last Name"
-        name="Name"
-        class="name2"
-        type="text" 
-        required=""
-      />
-      <span class="icon2"><i class="fa fa-user" aria-hidden="true"></i></span>
-      <br />
-
-      <input
-        placeholder="Phone Number"
-        name="Number"
-        class="number"
-        type="text"
-        required=""
-      />
-      <span class="icon3"><i class="fa fa-phone" aria-hidden="true"></i></span
-      ><br />
-      <input
-        placeholder="Email"
-        name="mail"
-        class="mail"
-        type="text"
-        required=""
-      />
-      <span class="icon4"
-        ><i class="fa fa-envelope" aria-hidden="true"></i></span
-      ><br />
-      <input
-        placeholder="Password"
-        name="Password"
-        class="pass"
-        type="password"
-        required=""
-      />
-      <span class="icon5"><i class="fa fa-unlock" aria-hidden="true"></i></span
-      ><br />
-      <input
-        placeholder="Confirm Password"
-        name="Password"
-        class="pass"
-        type="password"
-        required=""
-      />
-      <span class="icon6"><i class="fa fa-unlock" aria-hidden="true"></i></span
-      ><br />
-
-      <input
-        class="nav-link"
-        routerLinkActive="active"
-        routerLink="/Sign-In"
-        type="submit"
-        value="sign up"
-      />
-    </form>
-  </div>
-  <div class="clear"></div>
-</div> -->

@@ -30,7 +30,7 @@ export class HeaderComponent implements OnInit {
         this.router.navigate(['/employee']);
         break;
       case '1':
-        this.router.navigate(['/donor']);
+        this.router.navigate(['/Donate-Now']);
         break;
       case '2':
         this.router.navigate(['/needy-person']);
@@ -42,6 +42,10 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  profileVisible() {
+    if (sessionStorage.getItem('userType') == '0') return true;
+    return false;
+  }
   routeProfile() {
     switch (sessionStorage.getItem('userType')) {
       case '0':

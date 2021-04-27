@@ -103,4 +103,10 @@ export class HttpEmployeeService {
       { headers: this.httpheaders }
     );
   }
+
+  public validateUsername(username: any) {
+    return this.httpClient.get<any>(
+      this.baseUrl + 'validate-username/' + username
+    );
+  }
 }

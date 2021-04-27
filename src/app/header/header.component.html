@@ -17,64 +17,70 @@
       </li>
       <li>
         <div *ngIf="loggedInProfile()">
-          <a class="nav-link" (click)="routeDashboard()">Dashboard</a>
+          <a href="#" class="nav-link" (click)="routeDashboard()">Dashboard</a>
         </div>
       </li>
     </ul>
     <ul>
       <li><a href="#">About Us</a></li>
       <li>
-        <a class="nav-link" routerLinkActive="active" routerLink="/Donate-Now"
-          >Donate Now</a
-        >
+        <div *ngIf="!loggedInProfile()">
+          <a class="nav-link" routerLinkActive="active" routerLink="/Donate-Now"
+            >Donate Now</a
+          >
+        </div>
       </li>
       <li>
-        <a class="nav-link" routerLinkActive="active" routerLink="/Need-Help"
-          >Need Help</a
-        >
+        <div *ngIf="!loggedInProfile()">
+          <a class="nav-link" routerLinkActive="active" routerLink="/Need-Help"
+            >Need Help</a
+          >
+        </div>
       </li>
     </ul>
     <ul>
-      <div id="login">
-        <li>
-          <div *ngIf="!loggedInProfile()">
-            <button
-              class="nav-link"
-              routerLinkActive="active"
-              routerLink="/Sign-In"
-              class="btn"
-            >
-              Sign in
-            </button>
-          </div>
-        </li>
-        <li>
-          <div *ngIf="!loggedInProfile()">
-            <button
-              class="nav-link"
-              routerLinkActive="active"
-              routerLink="/Sign-Up"
-              class="btn"
-            >
-              Sign up
-            </button>
-          </div>
-          <div id="profile" *ngIf="loggedInProfile()">
-            <button class="nav-link btn" (click)="routeProfile()">
-              Profile
-            </button>
-            <button
-              class="nav-link"
-              routerLinkActive="active"
-              routerLink="/home"
-              class="btn"
-              (click)="signOut()"
-            >
-              Sign Out
-            </button>
-          </div>
-        </li>
-      </div>
+      <li>
+        <div *ngIf="!loggedInProfile()">
+          <button
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/Sign-In"
+            class="btn"
+          >
+            Sign in
+          </button>
+        </div>
+      </li>
+      <li>
+        <div *ngIf="!loggedInProfile()">
+          <button
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/Sign-Up"
+            class="btn"
+          >
+            Sign up
+          </button>
+        </div>
+      </li>
+      <li>
+        <div id="profile" *ngIf="profileVisible()">
+          <button class="nav-link btn" (click)="routeProfile()">Profile</button>
+        </div>
+      </li>
+      <li>
+        <div id="profile" *ngIf="loggedInProfile()">
+          <button
+            class="nav-link"
+            routerLinkActive="active"
+            routerLink="/home"
+            class="btn"
+            (click)="signOut()"
+          >
+            Sign Out
+          </button>
+        </div>
+      </li>
     </ul>
   </nav>
 </div>

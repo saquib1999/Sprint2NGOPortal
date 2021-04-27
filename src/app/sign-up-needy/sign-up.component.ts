@@ -10,7 +10,6 @@ import { INeedyPeople } from '../needy-person/NeedyPeople';
 import { HttpNeedyPersonService } from '../services/http-needy-person.service';
 
 @Component({
-  //selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css'],
 })
@@ -28,26 +27,27 @@ export class SignUpNeedyComponent implements OnInit {
       name: new FormControl('', [
         Validators.required,
         Validators.pattern('[a-zA-Z ]*'),
+        Validators.minLength(4),
       ]),
       phone: new FormControl('', [
         Validators.required,
-        Validators.pattern('[1-9][0-9]{5,11}'),
-        Validators.minLength(6),
+        Validators.pattern('[1-9][0-9]{9,12}'),
+        Validators.minLength(10),
       ]),
       familyIncome: new FormControl('', [
         Validators.required,
-        // Validators.pattern('[1-9][.{1}0-9]'),
+        Validators.min(1),
       ]),
 
       userLoginDetails: new FormGroup({
         username: new FormControl('', [
           Validators.required,
-          Validators.pattern('[a-zA-Z][a-zA-Z0-9@#]{3,15}'),
+          Validators.pattern('[a-zA-Z][a-zA-Z0-9@#]*'),
           Validators.minLength(3),
         ]),
         password: new FormControl('', [
           Validators.required,
-          Validators.pattern('[a-zA-Z0-9@#]{3,15}'),
+          Validators.pattern('[a-zA-Z0-9@#]*'),
           Validators.minLength(3),
         ]),
         userType: new FormControl('NEEDYPERSON'),
@@ -66,10 +66,7 @@ export class SignUpNeedyComponent implements OnInit {
           Validators.required,
           Validators.pattern('[1-9][0-9]{5}'),
         ]),
-        landmark: new FormControl('', [
-          Validators.required,
-          Validators.pattern('a-zA-Z 0-9/,-'),
-        ]),
+        landmark: new FormControl('', [Validators.required]),
       }),
     });
   }
@@ -80,7 +77,7 @@ export class SignUpNeedyComponent implements OnInit {
         .registerNeedyPerson(this.signUpForm.value)
         .subscribe(
           (result) => console.log(result),
-          (err) => console.log('Error'),
+          (err) => console.log('Username Already Taken'),
           () => this.saveDetails()
         );
     }
@@ -95,6 +92,6 @@ export class SignUpNeedyComponent implements OnInit {
     return this.signUpForm.controls.address as FormGroup;
   }
   get userLoginDetails() {
-    return this.signUpForm.controls.address as FormGroup;
+    return this.signUpForm.controls.userLoginDetails as FormGroup;
   }
 }

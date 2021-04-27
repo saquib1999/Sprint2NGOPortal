@@ -6,7 +6,6 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { HttpEmployeeService } from 'src/app/services/http-employee.service';
 
 @Component({
@@ -16,6 +15,7 @@ import { HttpEmployeeService } from 'src/app/services/http-employee.service';
 })
 export class AddNeedyPersonComponent implements OnInit {
   addNeedyPersonForm!: FormGroup;
+  validUsername!: boolean;
 
   constructor(
     private httpEmployeeService: HttpEmployeeService,
@@ -31,12 +31,12 @@ export class AddNeedyPersonComponent implements OnInit {
       ]),
       phone: new FormControl('', [
         Validators.required,
-        Validators.pattern('[1-9][0-9]{5,11}'),
+        Validators.pattern('[0-9]{5,11}'),
         Validators.minLength(6),
       ]),
       familyIncome: new FormControl('', [
         Validators.required,
-        Validators.pattern('[1-9][.{1}0-9]'),
+        Validators.min(1),
       ]),
       userLoginDetails: new FormGroup({
         username: new FormControl('', [
@@ -64,10 +64,7 @@ export class AddNeedyPersonComponent implements OnInit {
           Validators.required,
           Validators.pattern('[1-9][0-9]{5}'),
         ]),
-        landmark: new FormControl('', [
-          Validators.required,
-          Validators.pattern('a-zA-Z 0-9/,-'),
-        ]),
+        landmark: new FormControl('', [Validators.required]),
       }),
     });
   }
@@ -76,10 +73,13 @@ export class AddNeedyPersonComponent implements OnInit {
     if (this.addNeedyPersonForm.valid) {
       this.httpEmployeeService
         .createNeedyPerson(this.addNeedyPersonForm.value)
-        .subscribe((value) => {
-          alert('Created');
-          this.route.navigate(['employee/all-needy-person']);
-        });
+        .subscribe(
+          (value) => {
+            alert('Created');
+            this.route.navigate(['employee/all-needy-person']);
+          },
+          (err) => alert('Username Already Taken')
+        );
     }
   }
 
@@ -87,6 +87,6 @@ export class AddNeedyPersonComponent implements OnInit {
     return this.addNeedyPersonForm.controls.address as FormGroup;
   }
   get userLoginDetails() {
-    return this.addNeedyPersonForm.controls.address as FormGroup;
+    return this.addNeedyPersonForm.controls.userLoginDetails as FormGroup;
   }
 }

@@ -47,6 +47,10 @@
             </div>
           </div>
 
+          <label *ngIf="!incorrectEmail" style="color: red"
+            >Incorrect Email Id or Password</label
+          >
+
           <button
             class="nav-link"
             class="btn btn-primary btn-block"

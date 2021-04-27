@@ -22,13 +22,33 @@ export class ModifyDetailsNewComponent implements OnInit {
   ngOnInit(): void {
     // console.log(this.needyPerson.name);
     this.modifyDetailsForm = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.minLength(3)]),
-      phone: new FormControl('', [Validators.required]),
-      familyIncome: new FormControl('', [Validators.required]),
+      name: new FormControl('', [
+        Validators.required,
+        Validators.pattern('[a-zA-Z ]*'),
+        Validators.minLength(4),
+      ]),
+      phone: new FormControl('', [
+        Validators.required,
+        Validators.pattern('[1-9][0-9]{9,12}'),
+        Validators.minLength(10),
+      ]),
+      familyIncome: new FormControl('', [
+        Validators.required,
+        Validators.min(1),
+      ]),
       address: new FormGroup({
-        city: new FormControl('', [Validators.required]),
-        state: new FormControl('', [Validators.required]),
-        pin: new FormControl('', [Validators.required]),
+        city: new FormControl('', [
+          Validators.required,
+          Validators.pattern('[a-zA-Z ]*'),
+        ]),
+        state: new FormControl('', [
+          Validators.required,
+          Validators.pattern('[a-zA-Z ]*'),
+        ]),
+        pin: new FormControl('', [
+          Validators.required,
+          Validators.pattern('[1-9][0-9]{5}'),
+        ]),
         landmark: new FormControl('', [Validators.required]),
       }),
     });
@@ -44,5 +64,9 @@ export class ModifyDetailsNewComponent implements OnInit {
         (err) => console.log('Error')
       );
     }
+  }
+
+  get address() {
+    return this.modifyDetailsForm.controls.address as FormGroup;
   }
 }

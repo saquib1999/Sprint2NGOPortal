@@ -1,8 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { FormGroup } from '@angular/forms';
 import { Observable, throwError } from 'rxjs';
-import { catchError, tap, map } from 'rxjs/operators';
 import { INeedyPeople } from '../needy-person/NeedyPeople';
 import { IRequest } from '../needy-person/Request';
 
@@ -14,7 +12,6 @@ export class HttpNeedyPersonService {
     Authorization: 'Bearer ' + sessionStorage.getItem('token'),
   });
 
-  private response!: Observable<any>;
   baseUrl = 'http://localhost:9898/ngo/';
 
   constructor(private httpClient: HttpClient) {}
@@ -54,8 +51,3 @@ export class HttpNeedyPersonService {
     });
   }
 }
-
-// public updateEmployee(employee : Employee){
-//   const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-//   return this.httpClient.put<Employee>(`${this.baseUrl}modify-employee`, employee, { headers:this.httpheaders })
-// }

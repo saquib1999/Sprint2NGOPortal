@@ -15,10 +15,12 @@ import { AuthServiceService } from '../services/auth-service.service';
   styleUrls: ['./sign-in.component.css'],
 })
 export class SignInComponent implements OnInit {
+  incorrectEmail = true;
   formGroup!: FormGroup;
   username!: Validators;
   private loggedIn = false;
   token = '';
+  type!: string | null;
 
   constructor(
     private fb: FormBuilder,
@@ -46,11 +48,13 @@ export class SignInComponent implements OnInit {
         (result) => {
           this.token = result.token;
           this.loggedIn = true;
+          this.type = sessionStorage.getItem('userType');
           this.routeDashboard();
         },
         (err) => {
           console.log('HTTP Error', err);
-          console.log(this.formGroup.value);
+          this.incorrectEmail = true;
+          alert('Incorrect Username or Password');
         }
       );
     }
