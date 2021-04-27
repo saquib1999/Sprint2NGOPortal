@@ -91,20 +91,51 @@
                 class="form-control"
                 required
               />
+              <div
+                class="form-control-feedback"
+                *ngIf="
+                  addNeedyPersonForm.controls['name'].touched ||
+                  addNeedyPersonForm.controls['name'].dirty
+                "
+              >
+                <span
+                  *ngIf="addNeedyPersonForm.controls['name'].errors?.required"
+                >
+                  Name Required
+                </span>
+                <span
+                  *ngIf="addNeedyPersonForm.controls['name'].errors?.pattern"
+                >
+                  Enter Valid Name
+                </span>
+              </div>
             </div>
 
             <div formGroupName="address" class="form-group">
               <div class="field">
                 <label>Address</label>
 
-                <textarea
+                <input
                   type="text"
                   class="form-control"
                   placeholder="Address"
                   formControlName="landmark"
                   required
+                />
+                <div
+                  class="form-control-feedback"
+                  *ngIf="
+                    address.controls['landmark'].touched ||
+                    address.controls['landmark'].dirty
+                  "
                 >
-                </textarea>
+                  <p *ngIf="address.controls['landmark'].errors?.required">
+                    Address Required
+                  </p>
+                  <p *ngIf="address.controls['landmark'].errors?.pattern">
+                    Special Characters Not allowed
+                  </p>
+                </div>
               </div>
               <div class="field">
                 <label>City</label>
@@ -116,6 +147,20 @@
                   formControlName="city"
                   required
                 />
+                <div
+                  class="form-control-feedback"
+                  *ngIf="
+                    address.controls['city'].touched ||
+                    address.controls['city'].dirty
+                  "
+                >
+                  <p *ngIf="address.controls['city'].errors?.required">
+                    City Required
+                  </p>
+                  <p *ngIf="address.controls['city'].errors?.pattern">
+                    Invalid City Name
+                  </p>
+                </div>
               </div>
               <div class="field">
                 <label>State</label>
@@ -127,6 +172,20 @@
                   formControlName="state"
                   required
                 />
+                <div
+                  class="form-control-feedback"
+                  *ngIf="
+                    address.controls['state'].touched ||
+                    address.controls['state'].dirty
+                  "
+                >
+                  <p *ngIf="address.controls['state'].errors?.required">
+                    State Required
+                  </p>
+                  <p *ngIf="address.controls['state'].errors?.pattern">
+                    Enter Valid State Name
+                  </p>
+                </div>
               </div>
               <div class="field">
                 <label>Pincode</label>
@@ -138,6 +197,20 @@
                   formControlName="pin"
                   required
                 />
+                <div
+                  class="form-control-feedback"
+                  *ngIf="
+                    address.controls['pin'].touched ||
+                    address.controls['pin'].dirty
+                  "
+                >
+                  <p *ngIf="address.controls['pin'].errors?.required">
+                    Pin-Code Required
+                  </p>
+                  <p *ngIf="address.controls['pin'].errors?.pattern">
+                    Enter Valid 6 Digit Pin-Code
+                  </p>
+                </div>
               </div>
             </div>
 
@@ -151,6 +224,28 @@
                 formControlName="familyIncome"
                 required
               />
+              <div
+                class="form-control-feedback"
+                *ngIf="
+                  addNeedyPersonForm.controls['familyIncome'].touched ||
+                  addNeedyPersonForm.controls['familyIncome'].dirty
+                "
+              >
+                <p
+                  *ngIf="
+                    addNeedyPersonForm.controls['familyIncome'].errors?.required
+                  "
+                >
+                  Family Income Required
+                </p>
+                <p
+                  *ngIf="
+                    addNeedyPersonForm.controls['familyIncome'].errors?.pattern
+                  "
+                >
+                  Enter Numbers only
+                </p>
+              </div>
             </div>
             <div class="form-group">
               <label>Phone</label>
@@ -161,6 +256,20 @@
                 class="form-control"
                 required
               />
+              <div
+                class="form-control-feedback"
+                *ngIf="
+                  addNeedyPersonForm.controls['landmark'].touched ||
+                  address.controls['landmark'].dirty
+                "
+              >
+                <p *ngIf="address.controls['landmark'].errors?.required">
+                  Address Required
+                </p>
+                <p *ngIf="address.controls['landmark'].errors?.pattern">
+                  Enter Valid Name
+                </p>
+              </div>
             </div>
             <div formGroupName="userLoginDetails">
               <div class="field">
@@ -173,6 +282,20 @@
                   formControlName="username"
                   required
                 />
+                <div
+                  class="form-control-feedback"
+                  *ngIf="
+                    address.controls['landmark'].touched ||
+                    address.controls['landmark'].dirty
+                  "
+                >
+                  <p *ngIf="address.controls['landmark'].errors?.required">
+                    Address Required
+                  </p>
+                  <p *ngIf="address.controls['landmark'].errors?.pattern">
+                    Enter Valid Name
+                  </p>
+                </div>
               </div>
               <div class="field">
                 <label>Password</label>
@@ -184,6 +307,43 @@
                   formControlName="password"
                   required
                 />
+                <div
+                  class="form-control-feedback"
+                  *ngIf="
+                    address.controls['landmark'].touched ||
+                    address.controls['landmark'].dirty
+                  "
+                >
+                  <p *ngIf="address.controls['landmark'].errors?.required">
+                    Address Required
+                  </p>
+                  <p *ngIf="address.controls['landmark'].errors?.pattern">
+                    Enter Valid Name
+                  </p>
+                </div>
+              </div>
+              <div class="field">
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Re-Enter password"
+                  formControlName="repassword"
+                  required
+                />
+                <div
+                  class="form-control-feedback"
+                  *ngIf="
+                    address.controls['landmark'].touched ||
+                    address.controls['landmark'].dirty
+                  "
+                >
+                  <p *ngIf="address.controls['landmark'].errors?.required">
+                    Address Required
+                  </p>
+                  <p *ngIf="address.controls['landmark'].errors?.pattern">
+                    Enter Valid Name
+                  </p>
+                </div>
               </div>
             </div>
           </div>

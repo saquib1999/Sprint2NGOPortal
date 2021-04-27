@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthServiceService } from 'src/app/services/auth-service.service';
 import { HttpEmployeeService } from 'src/app/services/http-employee.service';
@@ -14,24 +19,55 @@ export class AddNeedyPersonComponent implements OnInit {
 
   constructor(
     private httpEmployeeService: HttpEmployeeService,
-    private route: Router
+    private route: Router,
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
     this.addNeedyPersonForm = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      phone: new FormControl('', [Validators.required]),
-      familyIncome: new FormControl('', [Validators.required]),
+      name: new FormControl('', [
+        Validators.required,
+        Validators.pattern('[a-zA-Z ]*'),
+      ]),
+      phone: new FormControl('', [
+        Validators.required,
+        Validators.pattern('[1-9][0-9]{5,11}'),
+        Validators.minLength(6),
+      ]),
+      familyIncome: new FormControl('', [
+        Validators.required,
+        Validators.pattern('[1-9][.{1}0-9]'),
+      ]),
       userLoginDetails: new FormGroup({
-        username: new FormControl('', [Validators.required]),
-        password: new FormControl('', [Validators.required]),
+        username: new FormControl('', [
+          Validators.required,
+          Validators.pattern('[a-zA-Z][a-zA-Z0-9@#]{3,15}'),
+          Validators.minLength(3),
+        ]),
+        password: new FormControl('', [
+          Validators.required,
+          Validators.pattern('[a-zA-Z0-9@#]{3,15}'),
+          Validators.minLength(3),
+        ]),
         userType: new FormControl('NEEDYPERSON'),
       }),
-      address: new FormGroup({
-        city: new FormControl('', [Validators.required]),
-        state: new FormControl('', [Validators.required]),
-        pin: new FormControl('', [Validators.required]),
-        landmark: new FormControl('', [Validators.required]),
+      address: this.fb.group({
+        city: new FormControl('', [
+          Validators.required,
+          Validators.pattern('[a-zA-Z ]*'),
+        ]),
+        state: new FormControl('', [
+          Validators.required,
+          Validators.pattern('[a-zA-Z ]*'),
+        ]),
+        pin: new FormControl('', [
+          Validators.required,
+          Validators.pattern('[1-9][0-9]{5}'),
+        ]),
+        landmark: new FormControl('', [
+          Validators.required,
+          Validators.pattern('a-zA-Z 0-9/,-'),
+        ]),
       }),
     });
   }
@@ -45,5 +81,12 @@ export class AddNeedyPersonComponent implements OnInit {
           this.route.navigate(['employee/all-needy-person']);
         });
     }
+  }
+
+  get address() {
+    return this.addNeedyPersonForm.controls.address as FormGroup;
+  }
+  get userLoginDetails() {
+    return this.addNeedyPersonForm.controls.address as FormGroup;
   }
 }

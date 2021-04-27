@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
+import { HttpDonorService } from 'src/app/services/http-donor.service';
+import { Subscription } from 'rxjs';
+import { IDonation } from 'src/app/models/donation';
+import { Router } from '@angular/router';
 @Component({
   //selector: 'app-payment-receipt',
   templateUrl: './payment-receipt.component.html',
@@ -8,9 +12,19 @@ import html2canvas from 'html2canvas';
 })
 export class PaymentReceiptComponent implements OnInit {
 
-  constructor() { }
+  constructor(private donorService: HttpDonorService,private router: Router){}
+  errorMessage:string='';
+  sub!: Subscription;
+  receipt!: IDonation;
+  ngOnInit(): void{
+    this.sub=this.donorService.getLastReceipt().subscribe({
+      next: receipt => {
+        this.receipt = receipt;
+        console.log(this.receipt)
 
-  ngOnInit(): void {
+      },
+      error: err  => this.errorMessage = err
+    })
   }
   generatePDF() {
     var data = document.getElementById('contentToConvert') as HTMLCanvasElement ;
@@ -23,5 +37,9 @@ export class PaymentReceiptComponent implements OnInit {
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
       pdf.save('newPDF.pdf');
     });
+  }
+  
+  back(){
+    this.router.navigate(['/Donate-Now']);
   }
 }

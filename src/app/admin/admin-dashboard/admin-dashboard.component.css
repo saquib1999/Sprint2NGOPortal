@@ -1,0 +1,22 @@
+.col,
+.card {
+  height: 16em;
+  margin: 0.8em;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: #ffffff;
+}
+
+.left {
+  background-color: #00d1ff;
+}
+
+.right {
+  background-color: orange;
+}
+
+p {
+  font-size: 1.8em;
+}

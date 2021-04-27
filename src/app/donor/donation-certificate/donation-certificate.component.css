@@ -1,8 +1,8 @@
-body, html {
-    margin: 0;
-    padding: 0;
-}
 body {
+    margin: 25px;
+    padding: 0px 140px;
+    text-align: center;
+    left:10px;
     color: black;
     display: table;
     font-family: Georgia, serif;
@@ -11,11 +11,11 @@ body {
 }
 .container {
     border: 20px solid tan;
-    width: 1920px;
-    height: 720px;
+    width: 920px;
+    height: 420px;
     display: table-cell;
     vertical-align: middle;
-    border-bottom-left-radius: 10px;
+    border-radius: 15px;
 }
 .logo {
     color: tan;
@@ -43,23 +43,23 @@ body {
 }
 
 .footer{
-    padding: 34px 34px;
+    padding: 0px 0px;
 }
 .foot2{
     text-align: left;
-    padding-left: 40px;
-    padding-bottom: 80px;
-    padding-top: 30px;
+    padding-left: 5px;
+    padding-bottom: 28px;
+    padding-top: -18px;
     contain: layout;
 }
 
 .foot1{
     border-top: 2px solid black;
-    width: 250px;
-    margin-left: 750px;
+    width: 253px;
+    margin-left: 691px;
     text-align: right;
-    padding-top: 30px;
-    padding-right: 120px;
+    padding-top: 12px;
+    padding-right: 79px;
 }
 .btn{
     font-family: 'Baloo Bhai 2', cursive;

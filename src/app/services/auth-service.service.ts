@@ -18,6 +18,7 @@ export class AuthServiceService {
       (result) => {
         this.token = result.token;
         console.log('Success');
+        console.log(this.token);
         sessionStorage.setItem('username', '');
         let tokenStr = result.token;
         sessionStorage.setItem('token', tokenStr);

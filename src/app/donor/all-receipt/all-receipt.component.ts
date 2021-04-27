@@ -1,16 +1,37 @@
 import { Component, OnInit } from '@angular/core';
 import jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
+import { HttpDonorService } from 'src/app/services/http-donor.service';
+import { Subscription } from 'rxjs';
+import { IDonation } from 'src/app/models/donation';
+import { Router } from '@angular/router';
 @Component({
   //selector: 'app-all-receipt',
   templateUrl: './all-receipt.component.html',
   styleUrls: ['./all-receipt.component.css']
 })
 export class AllReceiptComponent implements OnInit {
+  
+  constructor(private donorService: HttpDonorService,private router: Router){}
+  totalAmount:number=0;
+  title:string='Product List'
+  errorMessage:string='';
+  sub!: Subscription;
+  receipt: IDonation[]=[];
+  ngOnInit(): void{
+    this.sub=this.donorService. getAllReceipt().subscribe({
+      next: receipt => {
+        this.receipt = receipt;
+        for(var i=0;i<receipt.length;i++)
+        {
+            this.totalAmount+=receipt[i].amount;
+        }
+        console.log(this.receipt)
 
-  constructor() { }
-
-  ngOnInit(): void {
+      },
+      error: err  => this.errorMessage = err
+    })
+    
   }
   generatePDF() {
     var data = document.getElementById('contentToConvert') as HTMLCanvasElement ;
@@ -25,4 +46,9 @@ export class AllReceiptComponent implements OnInit {
     });
   }
 
+  back(){
+    this.router.navigate(['/Donate-Now']);
+  }
+  
+  
 }

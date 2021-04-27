@@ -1,54 +1,32 @@
-<!-- <p>Cirtficate is also send on you mail</p> -->
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-    <div class="container" id="contentToConvert">
+<body id="contentToConvert">
+    <div class="container" id="contentToConvert" *ngIf="donor">
         <div class="logo">
             <img src="https://d2zcpk7yfyf2dq.cloudfront.net/milaap/image/upload/Final_mrhs7b.jpg" height="200"
                 width="400">
         </div>
-
         <div class="marquee">
             Certificate of Donation
         </div>
-
         <div class="assignment">
             This certificate is presented to
         </div>
-
         <div class="person">
-            Umang Srivastava
+            {{donorDetail.name}}
         </div>
-
         <div class="reason">
-            Lorem ipsum dolor sit, amet consectetur <br>
-            adipisicing elit. Aliquam, harum?
+            “You're braver than you believe,and stronger than you seem,<br>
+             and smarter than you think.”
         </div>
         <div class="footer">
-            <div class="foot1">
-                <b>Signature</b>
-            </div>
             <div class="foot2">
-                <b>Date Published: </b>dd/mm/yyyy
+                <b>Date Published: </b>{{donor.dateOfDonation|date : "dd.MM.yyyy"}}
             </div>
-
-        </div>
-        <div>
         </div>
     </div>
+    <div *ngIf="!donor">
+        <h1>NO Donation</h1>
+    </div>
 </body>
-
-</html>
-
 <br>
-<button class="btn" (click)="generatePDF()">Get Cirtficate</button>
-<button class='nav-link btn' routerLinkActive='active' routerLink='/Donate-Now'>Back</button>
+<button class="btn" (click)="generatePDF()" *ngIf="donor">Get Cirtficate</button>
+<button class='nav-link btn' (click)="back()">Back</button>

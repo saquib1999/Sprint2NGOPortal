@@ -38,7 +38,7 @@ export class DonationRequestComponent implements OnInit {
       .approveRequest(this.request)
       .subscribe((result) => {
         console.log(result);
-        this.route.navigate(['employee/donation-requests']);
+        window.location.reload();
       });
   }
 

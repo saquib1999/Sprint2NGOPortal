@@ -1,0 +1,74 @@
+<link
+  href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+  rel="stylesheet"
+  id="bootstrap-css"
+/>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<div class="container bg">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <h4>Delete Employee</h4>
+              <hr />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <form
+                class="deleteEmployee"
+                [formGroup]="deleteEmployeeForm"
+                (ngSubmit)="delete()"
+                class="justify-content-center"
+              >
+                <div class="form-group row">
+                  <label for="name" class="col-4 col-form-label"
+                    >Employee Username</label
+                  >
+                  <div class="col-8">
+                    <input
+                      id="usrname"
+                      formControlName="username"
+                      placeholder="Employee username"
+                      class="form-control here"
+                      required="required"
+                      type="text"
+                      [ngClass]="{
+                        'is-invalid':
+                          (deleteEmployeeForm.controls.username.touched ||
+                            deleteEmployeeForm.controls.username.dirty) &&
+                          !deleteEmployeeForm.controls.username.valid
+                      }"
+                      readonly
+                    />
+                    <span class="invalid-feedback">
+                      <span
+                        *ngIf="
+                          deleteEmployeeForm.controls.username.errors?.required
+                        "
+                        >Please enter Username</span
+                      >
+                    </span>
+                  </div>
+                </div>
+                <button
+                  id="final-row"
+                  class="nav-link"
+                  class="btn btn-primary btn-block"
+                  type="submit"
+                >
+                  Delete
+                </button>
+              </form>
+              <br />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

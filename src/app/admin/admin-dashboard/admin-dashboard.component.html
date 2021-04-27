@@ -1,2 +1,26 @@
-<p>admin-dashboard works!</p>
-<button (click)="OnClick()">logout</button>
+<div class="container">
+  <div class="row">
+    <div
+      class="col card left bg-success"
+      routerLinkActive="active"
+      [routerLink]="['/find-all-employees']"
+    >
+      <p>Manage Employees</p>
+    </div>
+    <div
+      class="col card left bg-success"
+      routerLinkActive="active"
+      [routerLink]="['/show-donationbox']"
+    >
+      <p>View Donation Box</p>
+    </div>
+    <div
+      class="col card left bg-success"
+      routerLinkActive="active"
+      [routerLink]="['/find-all-pending-donations']"
+    >
+      <p>Donation Approval</p>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

@@ -37,7 +37,7 @@ export class ApprovedListComponent implements OnInit {
     this.httpEmployeeService.helped(this.dd).subscribe(
       (result) => {
         console.log(result);
-        this.route.navigate(['employee/donated']);
+        window.location.reload();
       },
       (err) => {
         alert('error');

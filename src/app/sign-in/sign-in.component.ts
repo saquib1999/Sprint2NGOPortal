@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
 import { AuthServiceService } from '../services/auth-service.service';
@@ -11,10 +16,12 @@ import { AuthServiceService } from '../services/auth-service.service';
 })
 export class SignInComponent implements OnInit {
   formGroup!: FormGroup;
+  username!: Validators;
   private loggedIn = false;
   token = '';
 
   constructor(
+    private fb: FormBuilder,
     private router: Router,
     private authService: AuthServiceService
   ) {}
@@ -24,9 +31,12 @@ export class SignInComponent implements OnInit {
   }
 
   initForm() {
-    this.formGroup = new FormGroup({
-      username: new FormControl('', [Validators.required]),
-      password: new FormControl('', [Validators.required]),
+    this.formGroup = this.fb.group({
+      username: [
+        '',
+        [Validators.required, Validators.pattern('[a-zA-Z][a-zA-Z0-9]*')],
+      ],
+      password: ['', [Validators.required]],
     });
   }
 
@@ -52,10 +62,10 @@ export class SignInComponent implements OnInit {
         this.router.navigate(['/employee']);
         break;
       case '1':
-        this.router.navigate(['/donor']);
+        this.router.navigate(['/Donate-Now']);
         break;
       case '2':
-        this.router.navigate(['/needy-person']);
+        this.router.navigate(['/Need-Help']);
         break;
       case '3':
         this.router.navigate(['/admin']);

@@ -33,41 +33,49 @@
           >Need Help</a
         >
       </li>
-      <li><a href="#">Contact Us</a></li>
     </ul>
-    <div id="login">
-      <div *ngIf="!loggedInProfile()">
-        <button
-          class="nav-link"
-          routerLinkActive="active"
-          routerLink="/Sign-In"
-          class="btn"
-        >
-          Sign in
-        </button>
-
-        <button
-          class="nav-link"
-          routerLinkActive="active"
-          routerLink="/Sign-Up"
-          class="btn"
-        >
-          Sign up
-        </button>
+    <ul>
+      <div id="login">
+        <li>
+          <div *ngIf="!loggedInProfile()">
+            <button
+              class="nav-link"
+              routerLinkActive="active"
+              routerLink="/Sign-In"
+              class="btn"
+            >
+              Sign in
+            </button>
+          </div>
+        </li>
+        <li>
+          <div *ngIf="!loggedInProfile()">
+            <button
+              class="nav-link"
+              routerLinkActive="active"
+              routerLink="/Sign-Up"
+              class="btn"
+            >
+              Sign up
+            </button>
+          </div>
+          <div id="profile" *ngIf="loggedInProfile()">
+            <button class="nav-link btn" (click)="routeProfile()">
+              Profile
+            </button>
+            <button
+              class="nav-link"
+              routerLinkActive="active"
+              routerLink="/home"
+              class="btn"
+              (click)="signOut()"
+            >
+              Sign Out
+            </button>
+          </div>
+        </li>
       </div>
-      <div id="profile" *ngIf="loggedInProfile()">
-        <button class="nav-link btn" (click)="routeProfile()">Profile</button>
-        <button
-          class="nav-link"
-          routerLinkActive="active"
-          routerLink="/home"
-          class="btn"
-          (click)="signOut()"
-        >
-          Sign Out
-        </button>
-      </div>
-    </div>
+    </ul>
   </nav>
 </div>
 

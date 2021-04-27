@@ -14,7 +14,7 @@ export class AllNeedyPersonComponent implements OnInit {
   searchId!: number;
   needyPeopleFilter: NeedyPerson[] = [];
   needyId!: number;
-  totalNeedy!: number;
+  totalNeedy: number = 0;
   private _listFilter: string = '';
   needyPeople!: NeedyPerson[];
   addNeedyPersonForm!: FormGroup;
@@ -74,6 +74,20 @@ export class AllNeedyPersonComponent implements OnInit {
   }
 
   needyPersonDetails() {}
+
+  deleteNeedy(id: number) {
+    this.httpEmployeeService.deleteNeedyPeople(id).subscribe(
+      (result) => {
+        console.log(result);
+        alert('Record Deleted');
+        window.location.reload();
+      },
+      (err) => {
+        alert('Error');
+        console.log(err);
+      }
+    );
+  }
 
   submitForm() {}
 }

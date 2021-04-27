@@ -1,0 +1,81 @@
+<head>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round"
+  />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+  />
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+  />
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</head>
+<body id="contentToConvert">
+  <div class="container bootdey">
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1">
+        <div class="widget-box">
+          <div class="widget-header widget-header-large">
+            <h3 class="widget-title grey lighter">Manage Donations</h3>
+          </div>
+          <div class="space"></div>
+          <div>
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th class="center">Id</th>
+                  <th>Employee Id</th>
+                  <th class="hidden-xs">Amount to be Distributed</th>
+                  <th class="hidden-480">Actions</th>
+                </tr>
+              </thead>
+              <tbody *ngFor="let d of donations">
+                <tr>
+                  <td class="center">{{ d.id }}</td>
+
+                  <td>
+                    <a href="#">{{ d.distributedBy.id }}</a>
+                  </td>
+                  <td class="hidden-xs">
+                    {{ d.amountDistributed | currency: "&#8377;" }}
+                  </td>
+                  <td>
+                    <button
+                      class="w3-btn w3-green w3-border w3-border-black w3-round-large"
+                      color="primary"
+                      title="Approve"
+                      type="submit"
+                      routerLinkActive="active"
+                      [routerLink]="['approve', d.id, 'APPROVED']"
+                    >
+                      Approve
+                    </button>
+                    <button
+                      class="w3-btn w3-red w3-border w3-border-black w3-round-large"
+                      color="primary"
+                      type="submit"
+                      routerLinkActive="active"
+                      [routerLink]="['approve', d.id, 'REJECTED']"
+                    >
+                      Reject
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>

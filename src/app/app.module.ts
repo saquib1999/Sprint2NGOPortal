@@ -26,6 +26,11 @@ import { DistributedListComponent } from './employee/distributed-list/distribute
 import { PendingListComponent } from './employee/pending-list/pending-list.component';
 import { ApprovedListComponent } from './employee/approved-list/approved-list.component';
 import { ChangePasswordComponent } from './employee/change-password/change-password.component';
+import { EditProfileComponent } from './employee/edit-profile/edit-profile.component';
+import { DonorModule } from './donor/donor.module';
+import { NeedyPersonModule } from './needy-person/needyPerson.module';
+import { SignUpNeedyComponent } from './sign-up-needy/sign-up.component';
+import { AdminModule } from './admin/admin.module';
 
 @NgModule({
   declarations: [
@@ -51,6 +56,8 @@ import { ChangePasswordComponent } from './employee/change-password/change-passw
     PendingListComponent,
     ApprovedListComponent,
     ChangePasswordComponent,
+    EditProfileComponent,
+    SignUpNeedyComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +65,9 @@ import { ChangePasswordComponent } from './employee/change-password/change-passw
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    DonorModule,
+    NeedyPersonModule,
+    AdminModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

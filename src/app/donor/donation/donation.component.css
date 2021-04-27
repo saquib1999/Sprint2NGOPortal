@@ -1,10 +1,3 @@
-/*--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
---*/
-/*-- reset --*/
 
 /* sign in sign out button */
 #navbar{
@@ -78,11 +71,11 @@ h1 {
     text-align: center;
     color: #0c0500;
     font-weight: 100;
-    font-family: 'Lobster Two', cursive;
+    font-family: 'Lobster Two';
     letter-spacing: 3px;
 }
 /*-- main --*/
-.mainw3-agile{
+.mainf-agile{
     padding: 3em 0 0;
 }
 .main-agileinfo {
@@ -94,34 +87,34 @@ h1 {
 	-moz-box-shadow: -8px 8px 7px 0px rgb(3, 3, 3); 
     box-shadow: -8px 8px 7px 0px rgb(3, 3, 3);
 } 
-.w3pay-left{
+.fpay-left{
 	float: left;
     width: 50%;
-    background: url(../../../assets/images/img1.jpg)repeat 0px 0px;
+    background: url(../../../assets/images/bg.jpg)repeat 0px 0px;
     background-size: cover; 
     min-height: 425px;
 	text-align: center; 
 	position:relative;
 }
-.w3pay-left-text{
+.fpay-left-text{
     padding: 2em;
 }
-.w3pay-right {
+.fpay-right {
     float: right;
     width: 50%;
 	background:#fff;
 } 
-.w3pay-left-text h2 {
+.fpay-left-text h2 {
     font-size: 2em;
     color: #fff;
-    font-family: 'Lobster Two', cursive;
+    font-family: 'Lobster Two';
     letter-spacing: 2px;
     text-transform: uppercase;
 }
-.w3pay-left-text img {
+.fpay-left-text img {
     width: 33%; 
 }
-.w3pay-left-text p {
+.fpay-left-text p {
     font-size: .9em;
     color: #fff;
     line-height: 1.8em;
@@ -129,12 +122,12 @@ h1 {
     background: rgba(0, 0, 0, 0.38);
     padding: .5em;
 }
-.w3pay-left-text h3 {
+.fpay-left-text h3 {
     font-size: 3em;
     color: #FFEB3B;
-    font-family: 'Lobster Two', cursive;
+    font-family: 'Lobster Two';
 }
-.w3pay-left h6 {
+.fpay-left h6 {
     font-size: 0.8em;
     background: rgba(0, 0, 0, 0.62);
     font-weight: 200;
@@ -143,12 +136,12 @@ h1 {
     position: absolute;
     width: 100%;
 }
-.w3pay-left h6 a{ 
+.fpay-left h6 a{ 
     color: #fff; 
 	display:block;
 	padding: .8em 0;
 }
-.w3pay-left h6 a i.fa{
+.fpay-left h6 a i.fa{
     margin-right: 1em;
 }
 /*-- creditCard form --*/
@@ -158,7 +151,7 @@ h1 {
 .card-bounding aside {
     font-size: 1.4em;
     padding-bottom: .3em;
-    font-family: 'Lobster Two', cursive;
+    font-family: 'Lobster Two';
     letter-spacing: 1px;
 	color: #222;
 } 
@@ -237,7 +230,7 @@ h1 {
 	width: 45%;
 	float: left;
 }
-.w3pay-right input[type="submit"] {
+.fpay-right input[type="submit"] {
     outline: none;
     color: #fff;
     padding: 0.6em 1em;
@@ -254,27 +247,27 @@ h1 {
 	-ms-transition:.5s all;
 	transition:.5s all;
 }
-.w3pay-right input[type="submit"]:hover {
+.fpay-right input[type="submit"]:hover {
     background: #FFEB3B;
     color: #16a085;
 }
 /*-- //creditCard form --*/
 /*-- //main --*/
 /*-- copyright --*/
-.w3lscopy-agile{
+.flscopy-agile{
     margin: 2em 0;
     text-align: center;
 }
-.w3lscopy-agile p {
+.flscopy-agile p {
     font-size: 0.9em;
     color: #fff;
     line-height: 1.8em;
     letter-spacing: 1px;
 }
-.w3lscopy-agile p a{
+.flscopy-agile p a{
     color: #fff;
 }
-.w3lscopy-agile p a:hover{
+.flscopy-agile p a:hover{
     color: #FFEB3B; 
 	-webkit-transition: 0.5s all;
 	-moz-transition: 0.5s all;
@@ -293,7 +286,7 @@ h1 {
 .main-agileinfo {
     width: 70%;
 }
-.mainw3-agile {
+.mainf-agile {
     padding: 2em 0 0;
 }
 h1 {
@@ -305,10 +298,10 @@ h1 {
 .card-bounding aside {
     font-size: 1.2em; 
 }
-.w3pay-left-text h2 {
+.fpay-left-text h2 {
     font-size: 1.5em; 
 }
-.w3pay-left { 
+.fpay-left { 
     min-height: 410px; 
 }
 .card-container { 
@@ -326,7 +319,7 @@ h1 {
 .main-agileinfo {
     width: 87%;
 }
-.w3pay-left-text h3 {
+.fpay-left-text h3 {
     font-size: 2.5em; 
 }
 .card-container input { 
@@ -334,10 +327,10 @@ h1 {
 }
 }
 @media(max-width:736px){
-.w3pay-right { 
+.fpay-right { 
     width: 52%; 
 }
-.w3pay-left {
+.fpay-left {
     width: 48%;
 	min-height: 394px;
 }
@@ -347,7 +340,7 @@ h1 {
 .card-bounding {
     padding: 2em 1.8em;
 }
-.w3pay-left-text {
+.fpay-left-text {
     padding: 1.8em;
 } 
 }
@@ -355,7 +348,7 @@ h1 {
 .card-bounding {
     padding: 1.8em 1.5em;
 }
-.w3pay-left,.w3pay-right{
+.fpay-left,.fpay-right{
     width: 100%;
     min-height: inherit;
     float: none;
@@ -363,13 +356,13 @@ h1 {
 .main-agileinfo {
     width: 65%;
 }
-.w3pay-left-text img {
+.fpay-left-text img {
     width: 17%;
 }
-.w3pay-left-text h2 {
+.fpay-left-text h2 {
     font-size: 1.3em;
 }
-.w3pay-left-text h3 { 
+.fpay-left-text h3 { 
     margin-bottom: 0.8em;
 } 
 .card-details input,.card-container input { 
@@ -386,7 +379,7 @@ h1 {
 }
 }
 @media(max-width:568px){
-.mainw3-agile {
+.mainf-agile {
     padding: 1.5em 0 0;
 }
 h1 {
@@ -395,20 +388,20 @@ h1 {
 .main-agileinfo {
     width: 72%;
 }
-.w3pay-left-text {
+.fpay-left-text {
     padding: 1.5em;
 }
-.w3pay-left-text p {
+.fpay-left-text p {
     font-size: .8em; 
 }
-.w3pay-left-text h3 {
+.fpay-left-text h3 {
     margin-bottom: 1.2em;
     font-size: 2em;
 }
-.w3pay-left h6 { 
+.fpay-left h6 { 
     letter-spacing: 2px; 
 }
-.w3lscopy-agile p {
+.flscopy-agile p {
     font-size: 0.8em; 
 }
 .main-agileinfo {
@@ -416,13 +409,13 @@ h1 {
 } 
 } 
 @media(max-width:414px){
-.w3pay-right input[type="submit"] { 
+.fpay-right input[type="submit"] { 
     font-size: 0.9em; 
 }
 .main-agileinfo {
     width: 78%;
 }
-.w3lscopy-agile p { 
+.flscopy-agile p { 
     padding: 0 1em;
 }
 }
@@ -448,7 +441,7 @@ h1 {
     font-size: 1.7em;
     letter-spacing: 1px;
 }
-.w3pay-left-text {
+.fpay-left-text {
     padding: 1.2em;
 }
 .card-details input, .card-container input {
@@ -475,17 +468,17 @@ h1 {
 .card-bounding aside {
     font-size: 1em;
 }
-.w3pay-left-text h2 {
+.fpay-left-text h2 {
     font-size: 1.1em;
     letter-spacing: 1px;
 }
-.w3pay-left-text p { 
+.fpay-left-text p { 
     margin: 1em 0; 
 }
 .card-container input {
     padding: 0.7em 0.5em;
 } 
-.w3lscopy-agile {
+.flscopy-agile {
     margin: 1.5em 0; 
 }
 }

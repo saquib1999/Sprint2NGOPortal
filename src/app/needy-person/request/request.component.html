@@ -1,0 +1,143 @@
+
+<nav class='navbar navbar-expand navbar-light bg-light'>
+  <ul class='nav nav-pills'>
+    <li><a class="nav-link" routerLink='/Need-Help/my-profile'>My Profile</a></li>
+    <li><a class="nav-link" aria-current="page" routerLink='/Need-Help/request'>Request</a></li>
+    <li><a class="nav-link" routerLink='/Need-Help/request-status'>Check Request Status</a></li>
+    <li><a class="nav-link" routerLinkActive='active' routerLink='/Need-Help/modify-details'>Modify Personal Details</a>
+    </li>
+  </ul>
+</nav>
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-9">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <h4>{{pageTitle}}</h4>
+              <hr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <form class="createRequest" [formGroup]="requestForm" (ngSubmit)="addRequest()">
+                <div class="form-group row">
+                  <label for="amount" class="col-4 col-form-label">Amount</label>
+                  <div class="col-8">
+                    <input id="amount" name="amount" placeholder="Enter the amount" class="form-control here"
+                      formControlName="amountOrQuantity" required="required" type="number"
+                      [ngClass]="{'is-invalid': (requestForm.controls.amountOrQuantity.touched || requestForm.controls.amountOrQuantity.dirty) && !requestForm.controls.amountOrQuantity.valid }"
+                    >
+                    <span class="invalid-feedback">
+                        <span *ngIf="requestForm.controls.amountOrQuantity.errors?.required">Please enter amount.</span>
+                      </span>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="reason" class="col-4 col-form-label">Reason</label>
+                  <div class="col-8">
+                    <input id="reason" name="reason" placeholder="Specify the reason" class="form-control here"
+                      formControlName="reason" required="required" type="text" 
+                      [ngClass]="{'is-invalid': (requestForm.controls.reason.touched || requestForm.controls.reason.dirty) && !requestForm.controls.reason.valid }"
+                      >
+                      <span class="invalid-feedback">
+                        <span *ngIf="requestForm.controls.reason.errors?.required">Please specify reason.</span>
+                      </span>
+                  </div>
+                </div>
+                  
+                <div class="form-group row">
+                  <div class="offset-4 col-8">
+                    <button name="submit" type="submit" class="btn btn-primary" [disabled]='!requestForm.valid'>Submit</button>
+                    <button class="btn btn-outline-secondary" (click)= 'onBack()'>Back</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <nav class='navbar navbar-expand navbar-light bg-light'>
+    <ul class='nav nav-pills'>
+      <li><a class="nav-link" routerLink='/Need-Help/my-profile'>My Profile</a></li>
+     <li><a class="nav-link active" aria-current="page" routerLinkActive='active' routerLink='/Need-Help/request'>Request</a>    </li>
+      <li><a class="nav-link"  routerLink='/Need-Help/request-status'>Check Request Status</a></li>
+      <li><a class="nav-link" routerLink='/Need-Help/modify-details'>Modify Personal Details</a></li>
+    </ul>
+</nav>
+<div class='card' style="width: 40rem">
+    <div class='card-header'>
+        {{pageTitle}}
+    </div>
+</div>
+
+<div class='card-body' style="width: 40rem">
+    <form class="createRequest" [formGroup]="requestForm" (ngSubmit)="addRequest()">
+        <div class='row'>
+            <div class='col-md-12'>
+              <div class='row'>
+                <div class='col-md-2'>Amount:</div>
+                <input type="number" placeholder="Enter the amount" formControlName="amountOrQuantity" required=""
+                [ngClass]="{'is-invalid': (requestForm.controls.amountOrQuantity.touched || requestForm.controls.amountOrQuantity.dirty) && !requestForm.controls.amountOrQuantity.valid }"
+                >
+                <span class="invalid-feedback">
+                  <span *ngIf="requestForm.controls.amountOrQuantity.errors?.required">Please enter Amount.</span>
+                </span>
+              </div>
+              
+              <div class='row'>
+                <div class='col-md-2'>Reason:</div>
+                <input type="text" placeholder="Specify the Reason" formControlName="reason" required=""
+                [ngClass]="{'is-invalid': (requestForm.controls.reason.touched || requestForm.controls.reason.dirty) && !requestForm.controls.reason.valid }"
+                >
+                <span class="invalid-feedback">
+                  <span *ngIf="requestForm.controls.reason.errors?.required">Please specify reason.</span>
+                </span>
+              </div>
+            </div>
+          </div>
+      
+        <div class="card" style="width: 39rem;">
+            <div class="card-footer">
+                <button class="btn btn-block btn-primary" type="submit">Submit</button>
+                <button class="btn btn-block btn-outline-secondary" (click)= 'onBack()'>Back</button>
+            </div>
+        </div>
+          
+
+    </form>
+    
+
+  -->

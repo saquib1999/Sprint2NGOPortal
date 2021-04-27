@@ -1,72 +1,315 @@
-<div class="main-agileits">
-  <h2 class="sub-head">Sign Up</h2>
-  <div class="sub-main">
-    <form action="#" method="post">
-      <input
-        placeholder="First Name"
-        name="Name"
-        class="name"
-        type="text"
-        required=""
-      />
-      <span class="icon1"><i class="fa fa-user" aria-hidden="true"></i></span
-      ><br />
-      <input
-        placeholder="Last Name"
-        name="Name"
-        class="name2"
-        type="text"
-        required=""
-      />
-      <span class="icon2"><i class="fa fa-user" aria-hidden="true"></i></span>
-      <br />
-
-      <input
-        placeholder="Phone Number"
-        name="Number"
-        class="number"
-        type="text"
-        required=""
-      />
-      <span class="icon3"><i class="fa fa-phone" aria-hidden="true"></i></span
-      ><br />
-      <input
-        placeholder="Email"
-        name="mail"
-        class="mail"
-        type="text"
-        required=""
-      />
-      <span class="icon4"
-        ><i class="fa fa-envelope" aria-hidden="true"></i></span
-      ><br />
-      <input
-        placeholder="Password"
-        name="Password"
-        class="pass"
-        type="password"
-        required=""
-      />
-      <span class="icon5"><i class="fa fa-unlock" aria-hidden="true"></i></span
-      ><br />
-      <input
-        placeholder="Confirm Password"
-        name="Password"
-        class="pass"
-        type="password"
-        required=""
-      />
-      <span class="icon6"><i class="fa fa-unlock" aria-hidden="true"></i></span
-      ><br />
-
-      <input
-        class="nav-link"
-        routerLinkActive="active"
-        routerLink="/Sign-In"
-        type="submit"
-        value="sign up"
-      />
-    </form>
+<link
+  href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+  rel="stylesheet"
+  id="bootstrap-css"
+/>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<div class="container bg">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <h4>Sign Up</h4>
+              <hr />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <form
+                class="signUp bg"
+                [formGroup]="signUpForm"
+                (ngSubmit)="save()"
+                class="justify-content-center"
+              >
+                <div class="form-group row required">
+                  <label for="name" class="col-4 col-form-label">Name</label>
+                  <div class="col-8">
+                    <input
+                      id="name"
+                      formControlName="name"
+                      name="name"
+                      placeholder="Name (required)"
+                      class="form-control"
+                      [ngClass]="{
+                        'is-invalid':
+                          (signUpForm.controls.name.touched ||
+                            signUpForm.controls.name.dirty) &&
+                          !signUpForm.controls.name.valid
+                      }"
+                      type="text"
+                    />
+                    <span class="invalid-feedback">
+                      <span *ngIf="signUpForm.controls.name.errors?.required"
+                        >Please enter Name</span
+                      >
+                      <span *ngIf="signUpForm.controls.name.errors?.pattern"
+                        >Please Enter Valid name
+                      </span>
+                    </span>
+                  </div>
+                </div>
+                <!-- <div class="form-group row required">
+                  <div class="col-25"><label for="name ">Name</label></div>
+                  <div class="col-75">
+                      <input type="text" formControlName="name" name="name" class="form-control" id="name" [ngClass]="{'is-invalid': (signUpForm.controls.name.touched ||signUpForm.controls.name.dirty) &&!signUpForm.controls.name.valid }" />
+                      <span class="invalid-feedback">
+                          <span *ngIf="signUpForm.controls.name.errors?.required">Please enter 'Stock' of plant</span>
+                      <span *ngIf="signUpForm.controls.name.errors?.minLength">Please enter positive value</span>
+                      </span>
+      
+                  </div> 
+            </div>-->
+                <div class="form-group row">
+                  <label for="email" class="col-4 col-form-label">Email</label>
+                  <div class="col-8">
+                    <input
+                      id="email"
+                      formControlName="email"
+                      placeholder="xxx@gmail.com (required)"
+                      class="form-control here"
+                      type="email"
+                      [ngClass]="{
+                        'is-invalid':
+                          (signUpForm.controls.email.touched ||
+                            signUpForm.controls.email.dirty) &&
+                          !signUpForm.controls.email.valid
+                      }"
+                    />
+                    <span class="invalid-feedback">
+                      <span *ngIf="signUpForm.controls.email.errors?.required"
+                        >Please enter Email</span
+                      >
+                      <span *ngIf="signUpForm.controls.email.errors?.email"
+                        >Please enter valid Email</span
+                      >
+                    </span>
+                  </div>
+                </div>
+                <div class="form-group row required">
+                  <label for="phone" class="col-4 col-form-label"
+                    >Phone Number</label
+                  >
+                  <div class="col-8">
+                    <input
+                      id="phone"
+                      formControlName="phone"
+                      placeholder="Mobile Number (required)"
+                      class="form-control"
+                      type="text"
+                      [ngClass]="{
+                        'is-invalid':
+                          (signUpForm.controls.phone.touched ||
+                            signUpForm.controls.phone.dirty) &&
+                          !signUpForm.controls.phone.valid
+                      }"
+                    />
+                    <span class="invalid-feedback">
+                      <span *ngIf="signUpForm.controls.phone.errors?.required"
+                        >Please enter Phone Number</span
+                      >
+                      <span *ngIf="signUpForm.controls.phone.errors?.minlength"
+                        >Number must be atleast 6 digit
+                      </span>
+                      <span *ngIf="signUpForm.controls.phone.errors?.pattern"
+                        >Number must be valid
+                      </span>
+                    </span>
+                  </div>
+                </div>
+                <br />
+                <hr />
+                <div class="form-group row">
+                  <label for="address" class="col-4 col-form-label"
+                    >Login Details:</label
+                  >
+                  <div class="col-8"></div>
+                </div>
+                <hr />
+                <div formGroupName="userLoginDetails">
+                  <div class="form-group row required">
+                    <label for="username" class="col-4 col-form-label"
+                      >User Name</label
+                    >
+                    <div class="col-8">
+                      <input
+                        id="username"
+                        formControlName="username"
+                        placeholder="Username (required)"
+                        class="form-control"
+                        type="text"
+                        [ngClass]="{
+                          'is-invalid':
+                            (userLoginDetails.controls.username.touched ||
+                              userLoginDetails.controls.username.dirty) &&
+                            !userLoginDetails.controls.username.valid
+                        }"
+                      />
+                      <span class="invalid-feedback">
+                        <span
+                          *ngIf="
+                            userLoginDetails.controls.username.errors?.required
+                          "
+                          >Please enter User Name</span
+                        >
+                        <span
+                          *ngIf="
+                            userLoginDetails.controls.username.errors?.minlength
+                          "
+                          >UserName must be atleast 3 number long
+                        </span>
+                        <span
+                          *ngIf="
+                            userLoginDetails.controls.username.errors?.pattern
+                          "
+                          >Number must be valid
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="password" class="col-4 col-form-label"
+                      >Password</label
+                    >
+                    <div class="col-8">
+                      <input
+                        id="password"
+                        formControlName="password"
+                        placeholder="Password (required)"
+                        class="form-control here"
+                        required="required"
+                        type="password"
+                        [ngClass]="{
+                          'is-invalid':
+                            (userLoginDetails.controls.password.touched ||
+                              userLoginDetails.controls.password.dirty) &&
+                            !userLoginDetails.controls.password.valid
+                        }"
+                      />
+                      <span class="invalid-feedback">
+                        <span
+                          *ngIf="
+                            userLoginDetails.controls.password.errors?.required
+                          "
+                          >Please enter User Name</span
+                        >
+                        <span
+                          *ngIf="
+                            userLoginDetails.controls.password.errors?.minlength
+                          "
+                          >UserName must be atleast 3 number long
+                        </span>
+                        <span
+                          *ngIf="
+                            userLoginDetails.controls.password.errors?.pattern
+                          "
+                          >Number must be valid
+                        </span>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="userType" class="col-4 col-form-label"
+                      >User Type</label
+                    >
+                    <div class="col-8">
+                      <input
+                        id="userType"
+                        formControlName="userType"
+                        placeholder="User Type (required)"
+                        class="form-control"
+                        required="required"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <br />
+                <hr />
+                <div class="form-group row">
+                  <label for="address" class="col-4 col-form-label"
+                    >Address:</label
+                  >
+                  <div class="col-8"></div>
+                </div>
+                <hr />
+                <div formGroupName="address">
+                  <div class="form-group row">
+                    <label for="city" class="col-4 col-form-label">City</label>
+                    <div class="col-8">
+                      <input
+                        id="city"
+                        formControlName="city"
+                        placeholder="City (optional)"
+                        class="form-control here"
+                        required="required"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="state" class="col-4 col-form-label"
+                      >State</label
+                    >
+                    <div class="col-8">
+                      <input
+                        id="state"
+                        formControlName="state"
+                        placeholder="State (optional)"
+                        class="form-control here"
+                        required="required"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="landmark" class="col-4 col-form-label"
+                      >Landmark</label
+                    >
+                    <div class="col-8">
+                      <input
+                        id="landmark"
+                        formControlName="landmark"
+                        placeholder="Landmark (optional)"
+                        class="form-control here"
+                        required="required"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="pin" class="col-4 col-form-label"
+                      >Pincode</label
+                    >
+                    <div class="col-8">
+                      <input
+                        id="pin"
+                        formControlName="pin"
+                        placeholder="Pincode (optional)"
+                        class="form-control here"
+                        required="required"
+                        type="text"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <button
+                  id="final-row"
+                  class="nav-link"
+                  class="btn btn-primary btn-block"
+                  type="submit"
+                >
+                  Submit
+                </button>
+              </form>
+              <br />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="clear"></div>
 </div>

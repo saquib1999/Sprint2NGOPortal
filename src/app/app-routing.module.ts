@@ -20,14 +20,15 @@ import { DonorGuardService } from './services/donor-guard.service';
 import { EmployeeGuardService } from './services/employee-guard.service';
 import { NeedyPersonGuardService } from './services/needy-person-guard.service';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { SignUpNeedyComponent } from './sign-up-needy/sign-up.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'Sign-In', component: SignInComponent },
-  { path: 'login', component: LoginComponent },
   { path: 'Sign-Up', component: SignUpComponent },
+  { path: 'Sign-Up-Needy', component: SignUpNeedyComponent },
   {
     path: 'employee',
     component: DashboardComponent,
@@ -76,12 +77,12 @@ const routes: Routes = [
     canActivate: [EmployeeGuardService],
   },
   {
-    path: 'donor',
+    path: 'Donate-Now',
     component: DonationComponent,
     canActivate: [DonorGuardService],
   },
   {
-    path: 'needy-person',
+    path: 'Need-Help',
     component: NeedyPersonDashboardComponent,
     canActivate: [NeedyPersonGuardService],
   },
@@ -89,10 +90,6 @@ const routes: Routes = [
     path: 'admin',
     component: AdminDashboardComponent,
     canActivate: [AdminGuardService],
-  },
-  {
-    path: 'Donate-Now',
-    component: DonationComponent,
   },
 ];
 

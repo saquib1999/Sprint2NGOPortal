@@ -1,0 +1,360 @@
+<link
+  href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+  rel="stylesheet"
+  id="bootstrap-css"
+/>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<div class="container bg">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-12">
+              <h4>Add Employee</h4>
+              <hr />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <form
+                class="Add Employee"
+                [formGroup]="addEmployeeForm"
+                (ngSubmit)="save()"
+                class="justify-content-center"
+              >
+                <div class="form-group row">
+                  <label for="name" class="col-4 col-form-label">Name</label>
+                  <div class="col-8">
+                    <input
+                      id="name"
+                      formControlName="name"
+                      placeholder="Name (required)"
+                      class="form-control here"
+                      type="text"
+                      [ngClass]="{
+                        'is-invalid':
+                          (addEmployeeForm.controls.name.touched ||
+                            addEmployeeForm.controls.name.dirty) &&
+                          !addEmployeeForm.controls.name.valid
+                      }"
+                    />
+                    <span class="invalid-feedback">
+                      <span
+                        *ngIf="addEmployeeForm.controls.name.errors?.required"
+                        >Please enter Name</span
+                      >
+                      <span
+                        *ngIf="addEmployeeForm.controls.name.errors?.minlength"
+                        >Name must be more than 3 letter
+                      </span>
+                      <span
+                        *ngIf="addEmployeeForm.controls.name.errors?.pattern"
+                        >Name should consists of Letters only</span
+                      >
+                    </span>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="email" class="col-4 col-form-label">Email</label>
+                  <div class="col-8">
+                    <input
+                      id="email"
+                      formControlName="email"
+                      placeholder="xxx@gmail.com (required)"
+                      class="form-control here"
+                      required="required"
+                      type="email"
+                      [ngClass]="{
+                        'is-invalid':
+                          (addEmployeeForm.controls.email.touched ||
+                            addEmployeeForm.controls.email.dirty) &&
+                          !addEmployeeForm.controls.email.valid
+                      }"
+                    />
+                    <span class="invalid-feedback">
+                      <span
+                        *ngIf="addEmployeeForm.controls.email.errors?.required"
+                        >Please enter Email</span
+                      >
+                      <span *ngIf="addEmployeeForm.controls.email.errors?.email"
+                        >Please enter Valid Email</span
+                      >
+                    </span>
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="phone" class="col-4 col-form-label"
+                    >Phone Number</label
+                  >
+                  <div class="col-8">
+                    <input
+                      id="phone"
+                      formControlName="phone"
+                      placeholder="Mobile Number (required)"
+                      class="form-control here"
+                      required="required"
+                      type="text"
+                      [ngClass]="{
+                        'is-invalid':
+                          (addEmployeeForm.controls.phone.touched ||
+                            addEmployeeForm.controls.phone.dirty) &&
+                          !addEmployeeForm.controls.phone.valid
+                      }"
+                    />
+                    <span class="invalid-feedback">
+                      <span
+                        *ngIf="addEmployeeForm.controls.phone.errors?.required"
+                        >Please enter Phone</span
+                      >
+                      <span
+                        *ngIf="addEmployeeForm.controls.phone.errors?.minlength"
+                        >Phone must be of 10 digits
+                      </span>
+                      <span
+                        *ngIf="addEmployeeForm.controls.phone.errors?.maxlength"
+                        >Phone should not be more than 10 digits
+                      </span>
+                      <span
+                        *ngIf="addEmployeeForm.controls.phone.errors?.pattern"
+                        >Phone should not contain only numbers
+                      </span>
+                    </span>
+                  </div>
+                </div>
+                <br />
+                <div class="form-group row">
+                  <label for="address" class="col-4 col-form-label"
+                    >Login Details:</label
+                  >
+                  <div class="col-8"></div>
+                </div>
+                <br />
+                <div formGroupName="userLoginDetails">
+                  <div class="form-group row">
+                    <label for="username" class="col-4 col-form-label"
+                      >User Name</label
+                    >
+                    <div class="col-8">
+                      <input
+                        id="username"
+                        formControlName="username"
+                        placeholder="Username (required)"
+                        class="form-control here"
+                        required="required"
+                        type="text"
+                        [ngClass]="{
+                          'is-invalid':
+                            (userLoginDetails.controls['username'].touched ||
+                              userLoginDetails.controls['username'].dirty) &&
+                            !userLoginDetails.controls['username'].valid
+                        }"
+                      />
+                      <span class="invalid-feedback">
+                        <p
+                          *ngIf="
+                            userLoginDetails.controls['username'].errors
+                              ?.required
+                          "
+                        >
+                          Username Required
+                        </p>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="password" class="col-4 col-form-label"
+                      >Password</label
+                    >
+                    <div class="col-8">
+                      <input
+                        id="password"
+                        formControlName="password"
+                        placeholder="Password (required)"
+                        class="form-control here"
+                        required="required"
+                        type="password"
+                        [ngClass]="{
+                          'is-invalid':
+                            (userLoginDetails.controls['password'].touched ||
+                              userLoginDetails.controls['password'].dirty) &&
+                            !userLoginDetails.controls['password'].valid
+                        }"
+                      />
+                      <span class="invalid-feedback">
+                        <p
+                          *ngIf="
+                            userLoginDetails.controls['password'].errors
+                              ?.required
+                          "
+                        >
+                          Password Required
+                        </p>
+                        <p
+                          *ngIf="
+                            userLoginDetails.controls['password'].errors
+                              ?.pattern
+                          "
+                        >
+                          Password not in Valid Format
+                        </p>
+                        <p
+                          *ngIf="
+                            userLoginDetails.controls['password'].errors
+                              ?.minLength
+                          "
+                        >
+                          Password should be atleast 8 characters
+                        </p>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <br />
+                <div class="form-group row">
+                  <label for="address" class="col-4 col-form-label"
+                    >Address:</label
+                  >
+                  <div class="col-8"></div>
+                </div>
+                <br />
+                <div formGroupName="address">
+                  <div class="form-group row">
+                    <label for="city" class="col-4 col-form-label">City</label>
+                    <div class="col-8">
+                      <input
+                        id="city"
+                        formControlName="city"
+                        placeholder="City"
+                        class="form-control here"
+                        required="required"
+                        type="text"
+                        [ngClass]="{
+                          'is-invalid':
+                            (address.controls['city'].touched ||
+                              address.controls['city'].dirty) &&
+                            !address.controls['city'].valid
+                        }"
+                      />
+                      <span class="invalid-feedback">
+                        <p *ngIf="address.controls['city'].errors?.required">
+                          City Required
+                        </p>
+                        <p *ngIf="address.controls['city'].errors?.pattern">
+                          City not in Valid Format
+                        </p>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="state" class="col-4 col-form-label"
+                      >State</label
+                    >
+                    <div class="col-8">
+                      <input
+                        id="state"
+                        formControlName="state"
+                        placeholder="State"
+                        class="form-control here"
+                        required="required"
+                        type="text"
+                        [ngClass]="{
+                          'is-invalid':
+                            (address.controls['state'].touched ||
+                              address.controls['state'].dirty) &&
+                            !address.controls['state'].valid
+                        }"
+                      />
+                      <span class="invalid-feedback">
+                        <p *ngIf="address.controls['state'].errors?.required">
+                          State Required
+                        </p>
+                        <p *ngIf="address.controls['state'].errors?.pattern">
+                          State not in Valid Format
+                        </p>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="landmark" class="col-4 col-form-label"
+                      >Landmark</label
+                    >
+                    <div class="col-8">
+                      <input
+                        id="landmark"
+                        formControlName="landmark"
+                        placeholder="Landmark"
+                        class="form-control here"
+                        required="required"
+                        type="text"
+                        [ngClass]="{
+                          'is-invalid':
+                            (address.controls['landmark'].touched ||
+                              address.controls['landmark'].dirty) &&
+                            !address.controls['landmark'].valid
+                        }"
+                      />
+                      <span class="invalid-feedback">
+                        <p
+                          *ngIf="address.controls['landmark'].errors?.required"
+                        >
+                          Landmark Required
+                        </p>
+                        <p *ngIf="address.controls['landmark'].errors?.pattern">
+                          Enter Valid Landmark
+                        </p>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="pin" class="col-4 col-form-label"
+                      >Pincode</label
+                    >
+                    <div class="col-8">
+                      <input
+                        id="pin"
+                        formControlName="pin"
+                        placeholder="Pincode"
+                        class="form-control here"
+                        required="required"
+                        type="text"
+                        [ngClass]="{
+                          'is-invalid':
+                            (address.controls['pin'].touched ||
+                              address.controls['pin'].dirty) &&
+                            !address.controls['pin'].valid
+                        }"
+                      />
+                      <span class="invalid-feedback">
+                        <p *ngIf="address.controls['pin'].errors?.required">
+                          PinCode Required
+                        </p>
+                        <p *ngIf="address.controls['pin'].errors?.minLength">
+                          Pincode cannot be less than 6 digits
+                        </p>
+                        <p *ngIf="address.controls['pin'].errors?.maxLength">
+                          Pincode cannot be more than 6 digits
+                        </p>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+                <button
+                  id="final-row"
+                  class="nav-link"
+                  class="btn btn-primary btn-block"
+                  type="submit"
+                >
+                  Submit
+                </button>
+              </form>
+              <br />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

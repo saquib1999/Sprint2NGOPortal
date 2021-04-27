@@ -24,97 +24,193 @@
         >All Receipts</a
       >
     </li>
+    <li>
+      <a class="nav-link" routerLinkActive="active" routerLink="/Profile"
+        >My Profile</a
+      >
+    </li>
   </ul>
 </nav>
-<div class="mainw3-agile">
+<!-- <div class="form-group row required">
+  <div class="col-25"><label for="name ">Name</label></div>
+  <div class="col-75">
+    <input type="text" formControlName="name" name="name" class="form-control" id="name"
+      [ngClass]="{'is-invalid': (donationForm.controls.nameOnCardtouched ||donationForm.controls.nameOnCarddirty) &&!donationForm.controls.nameOnCardvalid }" />
+    <span class="invalid-feedback">
+      <span *ngIf="donationForm.controls.nameOnCarderrors?.required">Please enter 'Stock' of plant</span>
+      <span *ngIf="donationForm.controls.nameOnCarderrors?.minLength">Please enter positive value</span>
+    </span>
+
+  </div>
+</div> -->
+<div class="mainf-agile">
   <h1>Donation Form</h1>
   <div class="main-agileinfo">
-    <div class="w3pay-left">
-      <div class="w3pay-left-text">
+    <div class="fpay-left">
+      <div class="fpay-left-text">
         <img src="../../../assets/images/logo.png" alt="" />
-        <h2>Lorem ipsum</h2>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Animi,
-          repellat?
-        </p>
-        <h3>20Rs</h3>
+        <h2>NGO Portal</h2>
       </div>
-      <h6>
-        <a class="nav-link" routerLinkActive="active" routerLink="/Donate-Now"
-          ><i class="fa fa-angle-double-left" aria-hidden="true"></i> Cancel
-          your payment</a
-        >
-      </h6>
     </div>
-    <div class="w3pay-right wthree-pay-grid">
+    <div class="fpay-right wthree-pay-grid">
       <div class="card-bounding agileits">
-        <form action="#" method="post">
-          <div class="card-details">
+        <form
+          action="#"
+          method="post"
+          autocomplete="on"
+          class="donation"
+          [formGroup]="donationForm"
+          (ngSubmit)="save()"
+        >
+          <div class="card-details required">
             <aside>Name On Card:</aside>
             <input
+              for="nameOnCard"
               type="text"
-              name="name"
               placeholder="Name On Card"
-              required=""
+              name="nameOncard"
+              formControlName="nameOnCard"
+              id="nameOnCard"
+              class="form-control"
+              [ngClass]="{
+                'is-invalid':
+                  (donationForm.controls.nameOnCard.touched ||
+                    donationForm.controls.nameOnCard.dirty) &&
+                  !donationForm.controls.nameOnCard.valid
+              }"
             />
+            <span class="invalid-feedback">
+              <span *ngIf="donationForm.controls.nameOnCard.errors?.required"
+                >Please enter Name On Card</span
+              >
+              <span *ngIf="donationForm.controls.nameOnCard.errors?.pattern"
+                >Name must be letter [a-z]or [A-Z]</span
+              >
+            </span>
           </div>
           <aside>Card Number:</aside>
           <div class="card-container">
-            <!--- ".card-type" is a sprite used as a background image with associated classes for the major card types, providing x-y coordinates for the sprite --->
             <div class="card-type"></div>
             <input
               type="text"
-              name="card number"
+              formControlName="cardNumber"
+              name="cardName"
+              class="form-control"
               placeholder="0000 0000 0000 0000"
               onkeyup="$cc.validate(event)"
-              required=""
+              [ngClass]="{
+                'is-invalid':
+                  (donationForm.controls.cardNumber.touched ||
+                    donationForm.controls.cardNumber.dirty) &&
+                  !donationForm.controls.cardNumber.valid
+              }"
             />
-            <!-- The checkmark ".card-valid" used is a custom font from icomoon.io --->
+            <span class="invalid-feedback">
+              <span *ngIf="donationForm.controls.cardNumber.errors?.required"
+                >Please enter Number On Card</span
+              >
+              <span *ngIf="donationForm.controls.cardNumber.errors?.pattern"
+                >Please enter 12 digit value</span
+              >
+            </span>
             <div class="card-valid">
               <i class="fa fa-check" aria-hidden="true"></i>
             </div>
           </div>
-          <div class="card-details agileits-w3layouts">
+          <div class="card-details agileits-flayouts">
             <div class="expiration">
               <aside>Expiration Date</aside>
               <input
                 type="text"
-                name="date"
-                onkeyup="$cc.expiry.call(this,event)"
-                maxlength="7"
-                placeholder="mm/yyyy"
-                required=""
+                id="expiryDate"
+                name="expiryDate"
+                class="form-control"
+                formControlName="expiryDate"
+                placeholder="mm/yy"
+                [ngClass]="{
+                  'is-invalid':
+                    (donationForm.controls.expiryDate.touched ||
+                      donationForm.controls.expiryDate.dirty) &&
+                    !donationForm.controls.expiryDate.valid
+                }"
               />
+              <span class="invalid-feedback">
+                <span *ngIf="donationForm.controls.expiryDate.errors?.required"
+                  >Please expiryDate
+                </span>
+                <span *ngIf="donationForm.controls.expiryDate.errors?.pattern"
+                  >Please Enter Valid Date
+                </span>
+              </span>
             </div>
             <div class="cvv">
               <aside>CVV</aside>
               <input
-                type="text"
-                name="cvv"
+                type="number"
+                class="form-control"
+                name="cvvNumber"
+                formControlName="cvvNumber"
                 placeholder="XXX"
-                maxlength="3"
-                required=""
+                [ngClass]="{
+                  'is-invalid':
+                    (donationForm.controls.cvvNumber.touched ||
+                      donationForm.controls.cvvNumber.dirty) &&
+                    !donationForm.controls.cvvNumber.valid
+                }"
               />
+              <span class="invalid-feedback">
+                <span *ngIf="donationForm.controls.cvvNumber.errors?.required"
+                  >Please CVV
+                </span>
+                <span *ngIf="donationForm.controls.cvvNumber.errors?.pattern"
+                  >Please enter 3 digit value present on the back of your
+                  card</span
+                >
+              </span>
+            </div>
+            <div class="cvv">
+              <aside>Amount</aside>
+              <input
+                type="number"
+                class="form-control"
+                name="amount"
+                formControlName="amount"
+                placeholder="XXXX"
+                [ngClass]="{
+                  'is-invalid':
+                    (donationForm.controls.amount.touched ||
+                      donationForm.controls.amount.dirty) &&
+                    !donationForm.controls.amount.valid
+                }"
+              />
+              <span class="invalid-feedback">
+                <span *ngIf="donationForm.controls.amount.errors?.required"
+                  >Please Amount
+                </span>
+                <span *ngIf="donationForm.controls.amount.errors?.pattern"
+                  >Please enter valid Amount</span
+                >
+              </span>
             </div>
             <div class="clear"></div>
           </div>
           <div class="form-control">
-            <label class="enquiry">Donation comments </label>
+            <label class="enquiry">Comments </label>
             <textarea
-              id="message"
-              name="message"
-              placeholder="comments"
+              type="text"
+              placeholder="description"
+              formControlName="description"
               title="Please enter comments"
             ></textarea>
             <div class="clear"></div>
           </div>
-          <input
+          <button
             class="nav-link"
-            routerLinkActive="active"
-            routerLink="/home"
+            class="btn btn-primary btn-block"
             type="submit"
-            value="Pay Now"
-          />
+          >
+            Submit
+          </button>
         </form>
       </div>
     </div>

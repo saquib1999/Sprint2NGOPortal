@@ -7,10 +7,9 @@ import { AuthServiceService } from 'src/app/services/auth-service.service';
   styleUrls: ['./needy-person-dashboard.component.css'],
 })
 export class NeedyPersonDashboardComponent implements OnInit {
+  
   constructor(private service: AuthServiceService) {}
 
   ngOnInit(): void {}
-  onClick() {
-    this.service.logOut();
-  }
+
 }

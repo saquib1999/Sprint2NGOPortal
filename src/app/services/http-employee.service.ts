@@ -29,8 +29,11 @@ export class HttpEmployeeService {
     });
   }
 
-  public deleteNeedyPeople(needyPerson: NeedyPerson) {
-    return this.httpClient.delete<any>(this.baseUrl + 'delete-needy-person/');
+  public deleteNeedyPeople(id: number) {
+    return this.httpClient.delete<any>(
+      this.baseUrl + 'delete-needy-person/' + id,
+      { headers: this.httpheaders }
+    );
   }
 
   public viewRequests() {
